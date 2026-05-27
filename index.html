@@ -109,6 +109,7 @@ nav {
   background: var(--blue) !important;
   color: var(--white) !important;
 }
+.hamburger { display: none; }
 
 /* ── HERO ── */
 .hero {
@@ -191,7 +192,7 @@ nav {
   margin-bottom: 36px;
 }
 .hero-title .hollow {
-  -webkit-text-stroke: 1.5px rgba(250,250,250,0.5);
+  -webkit-text-stroke: 1.5px #FAFAFA;
   color: transparent;
   display: inline;
 }
@@ -626,18 +627,40 @@ footer {
 
 /* ── RESPONSIVE ── */
 @media (max-width: 900px) {
-  nav { padding: 0 24px; }
+  nav { padding: 0 20px; }
   .nav-links { display: none; }
-  .hero-content { padding: 0 24px 48px; grid-template-columns: 1fr; }
+  .nav-links.open {
+    display: flex;
+    flex-direction: column;
+    position: fixed;
+    top: 64px; left: 0; right: 0;
+    background: var(--white);
+    border-bottom: 1px solid var(--rule-heavy);
+    padding: 24px 20px;
+    gap: 20px;
+    z-index: 199;
+  }
+  .nav-links.open a { font-size: 14px; color: var(--ink); }
+  .hamburger {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+    cursor: pointer;
+    padding: 4px;
+    background: none;
+    border: none;
+  }
+  .hamburger span { display: block; width: 22px; height: 2px; background: var(--ink); }
+  .hero-content { padding: 0 20px 48px; grid-template-columns: 1fr; }
   .hero-right { display: none; }
   .exh-feature { grid-template-columns: 1fr; }
   .exh-images { min-height: 60vw; }
-  .exh-info { padding: 48px 24px; border-left: none; border-top: 1px solid var(--rule-heavy); }
+  .exh-info { padding: 40px 20px; border-left: none; border-top: 1px solid var(--rule-heavy); }
   .about { grid-template-columns: 1fr; }
-  .about-left { padding: 60px 24px; }
-  .about-right { padding: 60px 24px; }
-  .contact { grid-template-columns: 1fr; gap: 40px; padding: 60px 24px; }
-  footer { grid-template-columns: 1fr; padding: 48px 24px; }
+  .about-left { padding: 60px 20px; }
+  .about-right { padding: 60px 20px; }
+  .contact { grid-template-columns: 1fr; gap: 40px; padding: 60px 20px; }
+  footer { grid-template-columns: 1fr; padding: 48px 20px; }
 }
 </style>
 </head>
@@ -650,11 +673,14 @@ footer {
     <span class="projects">Projects</span>
     <span class="dot"></span>
   </a>
-  <ul class="nav-links">
+  <ul class="nav-links" id="navLinks">
     <li><a href="/exhibitions/adaptation/">Exhibitions</a></li>
     <li><a href="#about">About</a></li>
     <li><a href="#contact" class="nav-cta">Get in touch</a></li>
   </ul>
+  <button class="hamburger" id="hamburger" onclick="document.getElementById('navLinks').classList.toggle('open')" aria-label="Menu">
+    <span></span><span></span><span></span>
+  </button>
 </nav>
 
 <!-- HERO -->
