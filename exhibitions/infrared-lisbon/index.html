@@ -1,0 +1,1028 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Infrared Lisbon — Jaki Gerulskis — Victory Projects</title>
+<meta name="description" content="Infrared Lisbon by Jaki Gerulskis. A traveling exhibition available through Victory Projects.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Oswald:wght@300;400;500;700&family=Source+Sans+3:ital,wght@0,300;0,400;0,500;1,300;1,400&family=Source+Serif+4:ital,opsz,wght@0,8..60,300;0,8..60,400;1,8..60,300;1,8..60,400&display=swap" rel="stylesheet">
+<style>
+:root {
+  --white: #FAFAFA;
+  --off-white: #F4F4F4;
+  --paper: #EEEEEE;
+  --ink: #0D0D0D;
+  --ink-mid: #3a3a3a;
+  --ink-light: #888880;
+  --rule: rgba(13,13,13,0.10);
+  --rule-heavy: rgba(13,13,13,0.18);
+  --blue: #1E3FA8;
+  --blue-pale: #E6EAF7;
+  --teal: #0A9E8E;
+  --teal-pale: #E2F4F2;
+  --pink: #C42D59;
+  --pink-pale: #F7E5EC;
+  --oswald: 'Oswald', sans-serif;
+  --dm: 'Source Sans 3', sans-serif;
+  --serif: 'Source Serif 4', serif;
+}
+
+* { margin: 0; padding: 0; box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+
+body {
+  background: var(--white);
+  color: var(--ink);
+  font-family: var(--dm);
+  font-size: 16px;
+  line-height: 1.6;
+  overflow-x: hidden;
+}
+
+/* ── NAV ── */
+nav {
+  position: fixed;
+  top: 0; left: 0; right: 0;
+  z-index: 200;
+  background: var(--white);
+  border-bottom: 1px solid var(--rule-heavy);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 48px;
+  height: 64px;
+}
+.nav-wordmark {
+  display: flex;
+  align-items: baseline;
+  text-decoration: none;
+}
+.nav-wordmark .victory {
+  font-family: var(--oswald);
+  font-weight: 700;
+  font-size: 17px;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--ink);
+}
+.nav-wordmark .projects {
+  font-family: var(--oswald);
+  font-weight: 300;
+  font-size: 17px;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--ink-mid);
+  margin-left: 7px;
+}
+.nav-wordmark .dot {
+  width: 5px; height: 5px;
+  border-radius: 50%;
+  background: var(--pink);
+  margin: 0 0 2px 7px;
+  flex-shrink: 0;
+  align-self: center;
+}
+.nav-links {
+  display: flex;
+  gap: 36px;
+  list-style: none;
+  align-items: center;
+}
+.nav-links a {
+  font-family: var(--oswald);
+  font-weight: 400;
+  font-size: 12px;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--ink-light);
+  text-decoration: none;
+  transition: color 0.2s;
+}
+.nav-links a:hover { color: var(--ink); }
+.nav-cta {
+  color: var(--blue) !important;
+  border: 1px solid var(--blue);
+  padding: 7px 16px;
+}
+.nav-cta:hover { background: var(--blue) !important; color: var(--white) !important; }
+
+/* ── HERO ── */
+.exh-hero {
+  margin-top: 64px;
+  position: relative;
+  height: calc(100vh - 64px);
+  overflow: hidden;
+  background: var(--ink);
+  display: flex;
+  align-items: flex-end;
+}
+
+.hero-bg {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(135deg, #0D0D0D 0%, #1a1a2e 35%, #0A9E8E 100%);
+  opacity: 0.9;
+}
+
+/* Subtle animated vignette */
+.hero-vignette {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(to top, rgba(13,13,13,0.85) 0%, rgba(13,13,13,0.1) 50%, transparent 100%);
+  z-index: 1;
+}
+
+.hero-content {
+  position: relative;
+  z-index: 2;
+  padding: 0 64px 64px;
+  width: 100%;
+  display: grid;
+  grid-template-columns: 1fr auto;
+  align-items: flex-end;
+  gap: 48px;
+}
+
+.hero-breadcrumb {
+  font-family: var(--oswald);
+  font-size: 10px;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: rgba(250,250,250,0.4);
+  margin-bottom: 20px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+.hero-breadcrumb a {
+  color: rgba(250,250,250,0.4);
+  text-decoration: none;
+  transition: color 0.2s;
+}
+.hero-breadcrumb a:hover { color: rgba(250,250,250,0.8); }
+.hero-breadcrumb span { color: rgba(250,250,250,0.2); }
+
+.hero-artist {
+  font-family: var(--oswald);
+  font-weight: 300;
+  font-size: clamp(14px, 1.5vw, 18px);
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--teal);
+  margin-bottom: 12px;
+}
+
+.hero-title {
+  font-family: var(--oswald);
+  font-weight: 700;
+  font-size: clamp(56px, 8vw, 110px);
+  line-height: 0.88;
+  text-transform: uppercase;
+  letter-spacing: -0.01em;
+  color: var(--white);
+  margin-bottom: 28px;
+}
+.hero-title .hollow {
+  -webkit-text-stroke: 1.5px rgba(250,250,250,0.4);
+  color: transparent;
+  display: block;
+}
+
+.hero-tags {
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+.hero-tag {
+  font-family: var(--oswald);
+  font-size: 9px;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  padding: 5px 12px;
+  border: 1px solid rgba(250,250,250,0.2);
+  color: rgba(250,250,250,0.55);
+}
+
+.hero-status {
+  text-align: right;
+  flex-shrink: 0;
+}
+.status-badge {
+  display: inline-block;
+  font-family: var(--oswald);
+  font-size: 10px;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  padding: 8px 18px;
+  background: var(--teal);
+  color: var(--ink);
+  margin-bottom: 16px;
+}
+.hero-scroll-hint {
+  font-family: var(--oswald);
+  font-size: 9px;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: rgba(250,250,250,0.25);
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  justify-content: flex-end;
+}
+.hero-scroll-hint::before {
+  content: '';
+  display: block;
+  width: 1px;
+  height: 32px;
+  background: rgba(250,250,250,0.2);
+  animation: scrollpulse 2s ease-in-out infinite;
+}
+@keyframes scrollpulse {
+  0%, 100% { opacity: 0.2; }
+  50% { opacity: 0.7; }
+}
+
+/* ── IMAGE STRIP ── */
+.image-strip {
+  display: grid;
+  grid-template-columns: 2fr 1fr 1fr;
+  grid-template-rows: 400px 280px;
+  gap: 3px;
+  background: var(--ink);
+}
+.img-cell {
+  overflow: hidden;
+  position: relative;
+  cursor: zoom-in;
+}
+.img-cell.span-col { grid-row: 1 / 3; }
+.img-fill {
+  width: 100%; height: 100%;
+  object-fit: cover;
+  display: block;
+  transition: transform 0.6s ease;
+}
+.img-cell:hover .img-fill { transform: scale(1.04); }
+.img-caption {
+  position: absolute;
+  bottom: 0; left: 0; right: 0;
+  padding: 10px 14px;
+  background: linear-gradient(to top, rgba(13,13,13,0.7), transparent);
+  font-size: 11px;
+  color: rgba(250,250,250,0.55);
+  font-style: italic;
+  opacity: 0;
+  transition: opacity 0.3s;
+}
+.img-cell:hover .img-caption { opacity: 1; }
+
+/* Placeholder image fills */
+.ph-ir-1 { background: linear-gradient(135deg, #0d0d12 0%, #1a2540 40%, #d4e8e4 100%); }
+.ph-ir-2 { background: linear-gradient(160deg, #0a0f1a 0%, #c8ddd8 100%); }
+.ph-ir-3 { background: linear-gradient(135deg, #050a10 0%, #8ab8b0 100%); }
+.ph-ir-4 { background: linear-gradient(135deg, #0d1520 0%, #b0ccc8 100%); }
+.ph-ir-5 { background: linear-gradient(160deg, #080d14 0%, #a0c0bc 100%); }
+
+/* ── MAIN CONTENT ── */
+.exh-body {
+  display: grid;
+  grid-template-columns: 1fr 340px;
+  gap: 0;
+  border-top: 1px solid var(--rule-heavy);
+}
+
+/* Left: text content */
+.exh-text {
+  padding: 72px 64px 80px;
+  border-right: 1px solid var(--rule-heavy);
+}
+
+.curator-line {
+  font-family: var(--dm);
+  font-size: 13px;
+  font-style: italic;
+  color: var(--ink-light);
+  margin-bottom: 40px;
+  padding-bottom: 40px;
+  border-bottom: 1px solid var(--rule);
+}
+.curator-line a {
+  color: var(--ink-mid);
+  text-decoration: none;
+  border-bottom: 1px solid var(--rule-heavy);
+  transition: border-color 0.2s;
+}
+.curator-line a:hover { border-color: var(--ink); }
+
+.exh-statement {
+  font-family: var(--serif);
+  font-style: italic;
+  font-size: clamp(20px, 2.2vw, 26px);
+  line-height: 1.5;
+  color: var(--ink);
+  margin-bottom: 36px;
+  max-width: 600px;
+}
+
+.exh-prose p {
+  font-size: 15px;
+  line-height: 1.8;
+  color: var(--ink-mid);
+  margin-bottom: 20px;
+  max-width: 600px;
+}
+.exh-prose p strong { color: var(--ink); font-weight: 500; }
+
+.exh-themes {
+  margin-top: 48px;
+  padding-top: 40px;
+  border-top: 1px solid var(--rule);
+}
+.themes-label {
+  font-family: var(--oswald);
+  font-size: 10px;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--ink-light);
+  margin-bottom: 20px;
+}
+.theme-item {
+  padding: 20px 0;
+  border-bottom: 1px solid var(--rule);
+}
+.theme-item:last-child { border-bottom: none; }
+.theme-name {
+  font-family: var(--oswald);
+  font-weight: 500;
+  font-size: 14px;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--ink);
+  margin-bottom: 6px;
+}
+.theme-desc {
+  font-size: 13px;
+  line-height: 1.65;
+  color: var(--ink-light);
+}
+
+/* Right: sidebar */
+.exh-sidebar {
+  padding: 72px 40px 80px;
+  position: sticky;
+  top: 64px;
+  align-self: start;
+}
+
+/* CTA */
+.sidebar-cta {
+  margin-bottom: 48px;
+}
+.cta-heading {
+  font-family: var(--oswald);
+  font-weight: 700;
+  font-size: 18px;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  color: var(--ink);
+  margin-bottom: 8px;
+  line-height: 1.1;
+}
+.cta-sub {
+  font-size: 13px;
+  color: var(--ink-light);
+  margin-bottom: 20px;
+  line-height: 1.6;
+}
+.cta-btn {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  font-family: var(--oswald);
+  font-weight: 500;
+  font-size: 12px;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--white);
+  background: var(--ink);
+  border: none;
+  padding: 16px 20px;
+  cursor: pointer;
+  text-decoration: none;
+  transition: background 0.2s;
+  margin-bottom: 8px;
+}
+.cta-btn:hover { background: var(--blue); }
+.cta-btn-secondary {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  font-family: var(--oswald);
+  font-weight: 400;
+  font-size: 12px;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--ink);
+  background: transparent;
+  border: 1px solid var(--rule-heavy);
+  padding: 14px 20px;
+  cursor: pointer;
+  text-decoration: none;
+  transition: all 0.2s;
+}
+.cta-btn-secondary:hover { border-color: var(--ink); }
+
+/* Venue list */
+.venue-section {
+  margin-top: 48px;
+  padding-top: 36px;
+  border-top: 1px solid var(--rule);
+}
+.venue-label {
+  font-family: var(--oswald);
+  font-size: 10px;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--ink-light);
+  margin-bottom: 24px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+.venue-label::before {
+  content: '';
+  display: block;
+  width: 18px;
+  height: 1px;
+  background: var(--pink);
+}
+
+.venue-narrative {
+  font-size: 13px;
+  line-height: 1.75;
+  color: var(--ink-mid);
+  margin-bottom: 28px;
+  font-style: italic;
+}
+
+.venue-timeline {
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+  position: relative;
+}
+.venue-timeline::before {
+  content: '';
+  position: absolute;
+  left: 5px;
+  top: 8px;
+  bottom: 8px;
+  width: 1px;
+  background: var(--rule-heavy);
+}
+.venue-item {
+  display: grid;
+  grid-template-columns: 20px 1fr;
+  gap: 14px;
+  padding-bottom: 24px;
+  position: relative;
+}
+.venue-item:last-child { padding-bottom: 0; }
+.venue-dot {
+  width: 11px;
+  height: 11px;
+  border-radius: 50%;
+  border: 1.5px solid var(--ink-light);
+  background: var(--white);
+  margin-top: 4px;
+  flex-shrink: 0;
+  position: relative;
+  z-index: 1;
+}
+.venue-dot.active {
+  border-color: var(--teal);
+  background: var(--teal);
+}
+.venue-dot.upcoming {
+  border-color: var(--blue);
+  background: var(--white);
+}
+.venue-name {
+  font-family: var(--oswald);
+  font-weight: 500;
+  font-size: 13px;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  color: var(--ink);
+  line-height: 1.2;
+  margin-bottom: 3px;
+}
+.venue-city {
+  font-size: 12px;
+  color: var(--ink-light);
+  margin-bottom: 2px;
+}
+.venue-dates {
+  font-family: var(--oswald);
+  font-size: 11px;
+  letter-spacing: 0.08em;
+  color: var(--ink-light);
+}
+.venue-dates.current { color: var(--teal); }
+.venue-dates.upcoming { color: var(--blue); }
+
+/* Specs */
+.specs-section {
+  margin-top: 48px;
+  padding-top: 36px;
+  border-top: 1px solid var(--rule);
+}
+.specs-label {
+  font-family: var(--oswald);
+  font-size: 10px;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--ink-light);
+  margin-bottom: 20px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+.specs-label::before {
+  content: '';
+  display: block;
+  width: 18px;
+  height: 1px;
+  background: var(--teal);
+}
+.spec-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  padding: 10px 0;
+  border-bottom: 1px solid var(--rule);
+  gap: 16px;
+}
+.spec-row:last-child { border-bottom: none; }
+.spec-key {
+  font-size: 12px;
+  color: var(--ink-light);
+  flex-shrink: 0;
+}
+.spec-val {
+  font-family: var(--oswald);
+  font-size: 13px;
+  letter-spacing: 0.04em;
+  color: var(--ink);
+  text-align: right;
+}
+
+/* ── FULL-WIDTH IMAGE BREAK ── */
+.image-break {
+  height: 60vh;
+  overflow: hidden;
+  position: relative;
+}
+.image-break .img-fill { transition: transform 8s ease; }
+.image-break:hover .img-fill { transform: scale(1.04); }
+.image-break-caption {
+  position: absolute;
+  bottom: 24px;
+  right: 32px;
+  font-size: 11px;
+  color: rgba(250,250,250,0.45);
+  font-style: italic;
+}
+
+/* ── RELATED ── */
+.related {
+  padding: 72px 64px 80px;
+  border-top: 1px solid var(--rule-heavy);
+}
+.related-header {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  margin-bottom: 40px;
+  padding-bottom: 16px;
+  border-bottom: 1px solid var(--rule);
+}
+.related-label {
+  font-family: var(--oswald);
+  font-weight: 700;
+  font-size: 13px;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--ink);
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+.related-label::before {
+  content: '';
+  display: block;
+  width: 18px;
+  height: 2px;
+  background: var(--pink);
+}
+.related-link {
+  font-family: var(--oswald);
+  font-size: 11px;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--blue);
+  text-decoration: none;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  transition: gap 0.2s;
+}
+.related-link:hover { gap: 14px; }
+.related-link::after { content: '→'; }
+
+.related-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1px;
+  background: var(--rule-heavy);
+  border: 1px solid var(--rule-heavy);
+}
+.related-card {
+  background: var(--white);
+  text-decoration: none;
+  color: inherit;
+  transition: background 0.2s;
+}
+.related-card:hover { background: var(--off-white); }
+.related-image {
+  aspect-ratio: 4/3;
+  overflow: hidden;
+}
+.related-image .img-fill { transition: transform 0.5s ease; }
+.related-card:hover .related-image .img-fill { transform: scale(1.04); }
+.related-body { padding: 20px 22px 24px; }
+.related-tag {
+  display: inline-block;
+  font-family: var(--oswald);
+  font-size: 9px;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  padding: 4px 10px;
+  margin-bottom: 10px;
+  background: var(--off-white);
+  color: var(--ink-light);
+}
+.related-title {
+  font-family: var(--oswald);
+  font-weight: 700;
+  font-size: 16px;
+  letter-spacing: 0.01em;
+  text-transform: uppercase;
+  line-height: 1.1;
+  color: var(--ink);
+  margin-bottom: 6px;
+}
+.related-artist {
+  font-size: 12px;
+  color: var(--ink-light);
+}
+
+/* ── FOOTER ── */
+footer {
+  background: var(--ink);
+  color: rgba(250,250,250,0.5);
+  padding: 48px;
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  gap: 40px;
+  align-items: start;
+  border-top: 3px solid var(--pink);
+}
+.footer-brand .wordmark {
+  font-family: var(--oswald);
+  font-weight: 700;
+  font-size: 18px;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--white);
+  margin-bottom: 10px;
+}
+.footer-brand .wordmark span { font-weight: 300; color: rgba(250,250,250,0.4); }
+.footer-brand p { font-size: 12px; line-height: 1.7; max-width: 240px; }
+.footer-nav-label {
+  font-family: var(--oswald);
+  font-size: 10px;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: rgba(250,250,250,0.3);
+  margin-bottom: 16px;
+}
+.footer-nav { list-style: none; display: flex; flex-direction: column; gap: 10px; }
+.footer-nav a {
+  font-family: var(--oswald);
+  font-size: 13px;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: rgba(250,250,250,0.5);
+  text-decoration: none;
+  transition: color 0.2s;
+}
+.footer-nav a:hover { color: var(--white); }
+.footer-copy {
+  font-size: 11px;
+  color: rgba(250,250,250,0.2);
+  margin-top: 40px;
+  padding-top: 20px;
+  border-top: 1px solid rgba(250,250,250,0.08);
+  grid-column: 1 / -1;
+  display: flex;
+  justify-content: space-between;
+}
+
+/* ── RESPONSIVE ── */
+@media (max-width: 960px) {
+  nav { padding: 0 24px; }
+  .nav-links { display: none; }
+  .hero-content { padding: 0 24px 40px; grid-template-columns: 1fr; }
+  .hero-status { display: none; }
+  .image-strip { grid-template-columns: 1fr 1fr; grid-template-rows: 240px 240px 240px; }
+  .img-cell.span-col { grid-row: auto; }
+  .exh-body { grid-template-columns: 1fr; }
+  .exh-text { padding: 48px 24px; border-right: none; border-bottom: 1px solid var(--rule-heavy); }
+  .exh-sidebar { padding: 48px 24px; position: static; }
+  .related { padding: 48px 24px; }
+  .related-grid { grid-template-columns: 1fr; }
+  footer { grid-template-columns: 1fr; padding: 40px 24px; }
+}
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <a href="/" class="nav-wordmark">
+    <span class="victory">Victory</span>
+    <span class="projects">Projects</span>
+    <span class="dot"></span>
+  </a>
+  <ul class="nav-links">
+    <li><a href="#">Exhibitions</a></li>
+    <li><a href="#">Artists</a></li>
+    <li><a href="#">Publications</a></li>
+    <li><a href="#">Workshops</a></li>
+    <li><a href="#">About</a></li>
+    <li><a href="#enquire" class="nav-cta">Enquire about this exhibition</a></li>
+  </ul>
+</nav>
+
+<!-- HERO -->
+<section class="exh-hero">
+  <div class="hero-bg"></div>
+  <div class="hero-vignette"></div>
+  <div class="hero-content">
+    <div>
+      <div class="hero-breadcrumb">
+        <a href="/">Victory Projects</a>
+        <span>/</span>
+        <a href="/exhibitions">Exhibitions</a>
+        <span>/</span>
+        Infrared Lisbon
+      </div>
+      <div class="hero-artist">Jaki Gerulskis</div>
+      <h1 class="hero-title">
+        Infrared<br>
+        <span class="hollow">Lisbon</span>
+      </h1>
+      <div class="hero-tags">
+        <span class="hero-tag">Monographic</span>
+        <span class="hero-tag">Infrared</span>
+        <span class="hero-tag">Street Photography</span>
+        <span class="hero-tag">Documentary</span>
+        <span class="hero-tag">Contemporary</span>
+      </div>
+    </div>
+    <div class="hero-status">
+      <div class="status-badge">Available to Travel</div>
+      <div class="hero-scroll-hint">Scroll</div>
+    </div>
+  </div>
+</section>
+
+<!-- IMAGE STRIP -->
+<div class="image-strip">
+  <div class="img-cell span-col">
+    <div class="img-fill ph-ir-1"></div>
+    <div class="img-caption">Praça do Comércio, Lisbon, 2023</div>
+  </div>
+  <div class="img-cell">
+    <div class="img-fill ph-ir-2"></div>
+    <div class="img-caption">Alfama, Lisbon, 2022</div>
+  </div>
+  <div class="img-cell">
+    <div class="img-fill ph-ir-3"></div>
+    <div class="img-caption">Mouraria, Lisbon, 2023</div>
+  </div>
+  <div class="img-cell">
+    <div class="img-fill ph-ir-4"></div>
+    <div class="img-caption">Tejo River, Lisbon, 2023</div>
+  </div>
+  <div class="img-cell">
+    <div class="img-fill ph-ir-5"></div>
+    <div class="img-caption">Belém, Lisbon, 2022</div>
+  </div>
+</div>
+
+<!-- BODY: TEXT + SIDEBAR -->
+<div class="exh-body">
+
+  <!-- LEFT: TEXT -->
+  <div class="exh-text">
+    <p class="curator-line">Curated by <a href="#">Jaki Gerulskis</a></p>
+
+    <p class="exh-statement">
+      The city stripped to its thermal truths — heat and shadow where colour used to be.
+    </p>
+
+    <div class="exh-prose">
+      <p><strong>Jaki Gerulskis</strong> has spent three years photographing Lisbon through a 720nm infrared filter, producing a body of work that renders the city unrecognisable and, in doing so, somehow truer. The limestone buildings glow white as bone. The Tagus turns dark as mercury. Human figures caught in motion become luminous, haloed — presences rather than people.</p>
+
+      <p>The infrared spectrum does not lie so much as it insists on a different register of reality. What the eye dismisses as background — the latent heat in old stone, the reflectance of leaves and skin — becomes the subject. <em>Infrared Lisbon</em> is not a document of the city as it looks but as it radiates.</p>
+
+      <p>Shot entirely on modified digital cameras with long exposures, the 32 works in this exhibition range from intimate street encounters to expansive architectural studies. Gerulskis brings the formal rigour of the photographic tradition to a city that has absorbed centuries of looking, and finds something in it that has never been seen before.</p>
+    </div>
+
+    <div class="exh-themes">
+      <div class="themes-label">Key Themes</div>
+      <div class="theme-item">
+        <div class="theme-name">The Visible and the Invisible</div>
+        <div class="theme-desc">Infrared photography makes visible the spectrum just beyond human perception, raising questions about what photography chooses to show and what it routinely suppresses.</div>
+      </div>
+      <div class="theme-item">
+        <div class="theme-name">City as Body</div>
+        <div class="theme-desc">Lisbon's limestone architecture and dense human activity respond differently to infrared light — skin glows, stone flares, shadow becomes substance. The urban environment is treated as a living organism.</div>
+      </div>
+      <div class="theme-item">
+        <div class="theme-name">The Street Photography Tradition</div>
+        <div class="theme-desc">Working from the tradition of Cartier-Bresson, Klein, and Moriyama while using a medium they never had access to — a conversation between the decisive moment and the alien spectrum.</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- RIGHT: SIDEBAR -->
+  <div class="exh-sidebar">
+
+    <!-- CTA -->
+    <div class="sidebar-cta" id="enquire">
+      <div class="cta-heading">Bring this exhibition to your institution</div>
+      <p class="cta-sub">We work directly with museum and gallery programmers. Get in touch to discuss dates, logistics, and fees.</p>
+      <a href="mailto:hello@victoryprojects.org?subject=Enquiry%3A%20Infrared%20Lisbon" class="cta-btn">
+        <span>Make an enquiry</span>
+        <span>→</span>
+      </a>
+      <a href="#" class="cta-btn-secondary">
+        <span>Download press kit</span>
+        <span>↓</span>
+      </a>
+    </div>
+
+    <!-- VENUE LIST -->
+    <div class="venue-section">
+      <div class="venue-label">Venue List</div>
+      <p class="venue-narrative">
+        Infrared Lisbon had its world premiere at Museu do Chiado in Lisbon in 2025. The exhibition will be available to travel from autumn 2026.
+      </p>
+      <div class="venue-timeline">
+        <div class="venue-item">
+          <div class="venue-dot active"></div>
+          <div>
+            <div class="venue-name">Museu do Chiado</div>
+            <div class="venue-city">Lisbon, Portugal</div>
+            <div class="venue-dates current">March – September 2025 · Premiere</div>
+          </div>
+        </div>
+        <div class="venue-item">
+          <div class="venue-dot upcoming"></div>
+          <div>
+            <div class="venue-name">Available from Autumn 2026</div>
+            <div class="venue-city">Touring internationally</div>
+            <div class="venue-dates upcoming">Enquire for availability</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- SPECS -->
+    <div class="specs-section">
+      <div class="specs-label">Exhibition Specifications</div>
+      <div class="spec-row">
+        <span class="spec-key">Works</span>
+        <span class="spec-val">32 photographs</span>
+      </div>
+      <div class="spec-row">
+        <span class="spec-key">Format</span>
+        <span class="spec-val">Archival pigment prints</span>
+      </div>
+      <div class="spec-row">
+        <span class="spec-key">Sizes</span>
+        <span class="spec-val">40×50 cm — 100×125 cm</span>
+      </div>
+      <div class="spec-row">
+        <span class="spec-key">Wall space</span>
+        <span class="spec-val">Min. 400 linear metres</span>
+      </div>
+      <div class="spec-row">
+        <span class="spec-key">Catalogue</span>
+        <span class="spec-val">Available · 120 pp</span>
+      </div>
+      <div class="spec-row">
+        <span class="spec-key">Languages</span>
+        <span class="spec-val">EN · PT · FR · DE</span>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<!-- FULL-WIDTH IMAGE BREAK -->
+<div class="image-break">
+  <div class="img-fill ph-ir-1" style="height:100%;"></div>
+  <div class="image-break-caption">Infrared Lisbon, installation view, Museu do Chiado, 2025</div>
+</div>
+
+<!-- RELATED EXHIBITIONS -->
+<div class="related">
+  <div class="related-header">
+    <span class="related-label">Related Exhibitions</span>
+    <a href="#" class="related-link">See all exhibitions</a>
+  </div>
+  <div class="related-grid">
+    <a href="#" class="related-card">
+      <div class="related-image">
+        <div class="img-fill ph-ir-2" style="height:100%;aspect-ratio:4/3;"></div>
+      </div>
+      <div class="related-body">
+        <span class="related-tag">Monographic · Street</span>
+        <div class="related-title">Nocturne</div>
+        <div class="related-artist">Maria Kapajeva</div>
+      </div>
+    </a>
+    <a href="#" class="related-card">
+      <div class="related-image">
+        <div class="img-fill ph-ir-3" style="height:100%;aspect-ratio:4/3;"></div>
+      </div>
+      <div class="related-body">
+        <span class="related-tag">Documentary · Contemporary</span>
+        <div class="related-title">Borderlands</div>
+        <div class="related-artist">Rafal Milach</div>
+      </div>
+    </a>
+    <a href="#" class="related-card">
+      <div class="related-image">
+        <div class="img-fill ph-ir-4" style="height:100%;aspect-ratio:4/3;"></div>
+      </div>
+      <div class="related-body">
+        <span class="related-tag">Monographic · Portrait</span>
+        <div class="related-title">The Quiet Ones</div>
+        <div class="related-artist">Joanna Piotrowska</div>
+      </div>
+    </a>
+  </div>
+</div>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-brand">
+    <div class="wordmark">Victory <span>Projects</span></div>
+    <p>An independent non-profit organisation producing and circulating high-calibre photography exhibitions internationally. Based in Lisbon.</p>
+  </div>
+  <div>
+    <div class="footer-nav-label">Programme</div>
+    <ul class="footer-nav">
+      <li><a href="#">Exhibitions</a></li>
+      <li><a href="#">Artists</a></li>
+      <li><a href="#">Publications</a></li>
+      <li><a href="#">Workshops</a></li>
+      <li><a href="#">Open Calls</a></li>
+    </ul>
+  </div>
+  <div>
+    <div class="footer-nav-label">Organisation</div>
+    <ul class="footer-nav">
+      <li><a href="#">About</a></li>
+      <li><a href="#">Contact</a></li>
+      <li><a href="#">Press</a></li>
+      <li><a href="#">Partners</a></li>
+      <li><a href="#">Support Us</a></li>
+    </ul>
+  </div>
+  <div class="footer-copy">
+    <span>© 2026 Victory Projects. Lisbon, Portugal.</span>
+    <span>victoryprojects.org</span>
+  </div>
+</footer>
+
+</body>
+</html>
