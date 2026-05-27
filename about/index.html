@@ -1,0 +1,352 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>About — Victory Projects</title>
+<link rel="icon" type="image/svg+xml" href="/favicon.svg">
+<meta name="description" content="Victory Projects is an independent organisation that develops and circulates lens-based art exhibitions internationally. Based in Lisbon.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Oswald:wght@300;400;500;700&family=Source+Sans+3:ital,wght@0,300;0,400;0,500;1,300;1,400&family=Source+Serif+4:ital,opsz,wght@0,8..60,300;0,8..60,400;1,8..60,300;1,8..60,400&display=swap" rel="stylesheet">
+<style>
+:root {
+  --white: #FAFAFA;
+  --off-white: #F4F4F4;
+  --ink: #0D0D0D;
+  --ink-mid: #3a3a3a;
+  --ink-light: #888880;
+  --rule: rgba(13,13,13,0.10);
+  --rule-heavy: rgba(13,13,13,0.18);
+  --blue: #1E3FA8;
+  --teal: #0EC4B0;
+  --pink: #C42D59;
+  --oswald: 'Oswald', sans-serif;
+  --dm: 'Source Sans 3', sans-serif;
+  --serif: 'Source Serif 4', serif;
+}
+
+* { margin: 0; padding: 0; box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+body {
+  background: var(--white);
+  color: var(--ink);
+  font-family: var(--dm);
+  font-size: 16px;
+  line-height: 1.6;
+  overflow-x: hidden;
+}
+
+/* ── NAV ── */
+nav {
+  position: fixed;
+  top: 0; left: 0; right: 0;
+  z-index: 200;
+  background: var(--white);
+  border-bottom: 1px solid var(--rule-heavy);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 48px;
+  height: 64px;
+}
+.nav-wordmark {
+  display: flex;
+  align-items: baseline;
+  text-decoration: none;
+}
+.nav-wordmark .victory {
+  font-family: var(--oswald);
+  font-weight: 700;
+  font-size: 17px;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--ink);
+}
+.nav-wordmark .projects {
+  font-family: var(--oswald);
+  font-weight: 300;
+  font-size: 17px;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--ink-mid);
+  margin-left: 7px;
+}
+.nav-wordmark .dot {
+  width: 5px; height: 5px;
+  border-radius: 50%;
+  background: var(--pink);
+  margin: 0 0 2px 7px;
+  flex-shrink: 0;
+  align-self: center;
+}
+.nav-links {
+  display: flex;
+  gap: 36px;
+  list-style: none;
+  align-items: center;
+}
+.nav-links a {
+  font-family: var(--oswald);
+  font-weight: 400;
+  font-size: 12px;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--ink-light);
+  text-decoration: none;
+  transition: color 0.2s;
+}
+.nav-links a:hover { color: var(--ink); }
+.nav-links a.active { color: var(--ink); }
+.nav-cta {
+  color: var(--blue) !important;
+  border: 1px solid var(--blue);
+  padding: 7px 16px;
+  transition: all 0.2s !important;
+}
+.nav-cta:hover { background: var(--blue) !important; color: var(--white) !important; }
+.hamburger { display: none; }
+
+/* ── MAIN CONTENT ── */
+.page-wrap {
+  margin-top: 64px;
+  max-width: 760px;
+  margin-left: auto;
+  margin-right: auto;
+  padding: 96px 48px 120px;
+}
+
+/* About text */
+.about-intro {
+  margin-bottom: 80px;
+}
+.about-intro p.lead {
+  font-family: var(--serif);
+  font-style: italic;
+  font-size: clamp(20px, 2.2vw, 26px);
+  line-height: 1.6;
+  color: var(--ink-mid);
+  margin-bottom: 28px;
+}
+.about-intro p.sub {
+  font-family: var(--dm);
+  font-size: 15px;
+  line-height: 1.85;
+  color: var(--ink-mid);
+  margin-bottom: 0;
+}
+
+/* Team */
+.team-label {
+  font-family: var(--oswald);
+  font-size: 10px;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: var(--ink-light);
+  margin-bottom: 48px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+.team-label::before {
+  content: '';
+  display: block;
+  width: 18px;
+  height: 1px;
+  background: var(--pink);
+}
+
+.team-member {
+  padding: 48px 0;
+  border-top: 1px solid var(--rule-heavy);
+}
+.team-member:last-child {
+  border-bottom: 1px solid var(--rule-heavy);
+}
+
+.member-name {
+  font-family: var(--oswald);
+  font-weight: 700;
+  font-size: 24px;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  color: var(--ink);
+  margin-bottom: 4px;
+}
+.member-role {
+  font-family: var(--oswald);
+  font-weight: 300;
+  font-size: 12px;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--teal);
+  margin-bottom: 24px;
+}
+.member-bio p {
+  font-size: 15px;
+  line-height: 1.85;
+  color: var(--ink-mid);
+  margin-bottom: 14px;
+}
+.member-bio p:last-child { margin-bottom: 0; }
+
+/* ── FOOTER ── */
+footer {
+  background: var(--ink);
+  padding: 48px 64px;
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  gap: 40px;
+  border-top: 2px solid var(--pink);
+}
+.footer-brand .wordmark {
+  font-family: var(--oswald);
+  font-weight: 700;
+  font-size: 17px;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--white);
+  margin-bottom: 12px;
+  display: flex;
+  align-items: baseline;
+}
+.footer-brand .wordmark .fp {
+  font-weight: 300;
+  letter-spacing: 0.18em;
+  color: rgba(250,250,250,0.6);
+  margin-left: 7px;
+}
+.footer-brand p { font-size: 12px; line-height: 1.7; max-width: 240px; color: rgba(250,250,250,0.65); }
+.footer-nav-label {
+  font-family: var(--oswald);
+  font-size: 10px;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: rgba(250,250,250,0.55);
+  margin-bottom: 16px;
+}
+.footer-nav { list-style: none; display: flex; flex-direction: column; gap: 10px; }
+.footer-nav a {
+  font-family: var(--oswald);
+  font-size: 13px;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: rgba(250,250,250,0.7);
+  text-decoration: none;
+  transition: color 0.2s;
+}
+.footer-nav a:hover { color: var(--white); }
+.footer-copy {
+  font-size: 11px;
+  color: rgba(250,250,250,0.5);
+  margin-top: 40px;
+  padding-top: 20px;
+  border-top: 1px solid rgba(250,250,250,0.12);
+  grid-column: 1 / -1;
+}
+
+/* ── RESPONSIVE ── */
+@media (max-width: 900px) {
+  nav { padding: 0 20px; }
+  .nav-links { display: none; }
+  .nav-links.open {
+    display: flex;
+    flex-direction: column;
+    position: fixed;
+    top: 64px; left: 0; right: 0;
+    background: var(--white);
+    border-bottom: 1px solid var(--rule-heavy);
+    padding: 24px 20px;
+    gap: 20px;
+    z-index: 199;
+  }
+  .nav-links.open a { font-size: 14px; color: var(--ink); }
+  .hamburger {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+    cursor: pointer;
+    padding: 4px;
+    background: none;
+    border: none;
+  }
+  .hamburger span { display: block; width: 22px; height: 2px; background: var(--ink); }
+  .page-wrap { padding: 64px 24px 96px; }
+  footer { grid-template-columns: 1fr; padding: 48px 20px; }
+}
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <a href="/" class="nav-wordmark">
+    <span class="victory">Victory</span>
+    <span class="projects">Projects</span>
+    <span class="dot"></span>
+  </a>
+  <ul class="nav-links" id="navLinks">
+    <li><a href="/exhibitions/adaptation/">Exhibitions</a></li>
+    <li><a href="/about/" class="active">About</a></li>
+    <li><a href="/#contact" class="nav-cta">Get in touch</a></li>
+  </ul>
+  <button class="hamburger" id="hamburger" onclick="document.getElementById('navLinks').classList.toggle('open')" aria-label="Menu">
+    <span></span><span></span><span></span>
+  </button>
+</nav>
+
+<!-- MAIN -->
+<div class="page-wrap">
+
+  <div class="about-intro">
+    <p class="lead">Victory Projects is an independent organisation that develops and circulates lens-based art exhibitions internationally.</p>
+    <p class="sub">We're based in Lisbon, a city in rapid transformation. As both a growing international tech hub and a nexus for postcolonial dialogue, the city has an unusually rich relationship with questions of culture, capital, and representation. It shapes how we think about the work we circulate.</p>
+  </div>
+
+  <div class="team-label">Team</div>
+
+  <div class="team-member">
+    <div class="member-name">Anne James</div>
+    <div class="member-role">Executive Director & Founding Curator</div>
+    <div class="member-bio">
+      <p>Anne James serves on the board of PhotoIreland, one of Europe's most significant photography organisations. In 2025 PhotoIreland opened the International Centre for the Image in Dublin, consolidating over a decade of work promoting lens-based arts and publishing as a founding member of the EU's Futures and Parallel photography platforms.</p>
+      <p>James holds an MA in Art and Research Collaboration from Dún Laoghaire Institute of Art, Design and Technology, an MSc in History of Material Culture from the University of Edinburgh, and a BA in Cultural Anthropology from Boston University.</p>
+    </div>
+  </div>
+
+  <div class="team-member">
+    <div class="member-name">Jaki Gerulskis</div>
+    <div class="member-role">Founding Producer</div>
+    <div class="member-bio">
+      <p>Jaki Gerulskis is Co-Founder of the Lisbon Street Photo Fest, an international photography festival held annually in the Portuguese capital with partners including Fujifilm and the Faculty of Fine Arts at the University of Lisbon. He also co-founded the Lisboa Photo Community (LxPC), an active photography and social community with over 1,000 members. Before founding Victory Projects, he spent a decade producing events and exhibitions at fine arts venues in New England.</p>
+    </div>
+  </div>
+
+</div>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-brand">
+    <div class="wordmark">Victory<span class="fp">Projects</span></div>
+    <p>Circulating lens-based art exhibitions internationally.</p>
+  </div>
+  <div>
+    <div class="footer-nav-label">Site</div>
+    <ul class="footer-nav">
+      <li><a href="/exhibitions/adaptation/">Exhibitions</a></li>
+      <li><a href="/about/">About</a></li>
+      <li><a href="/#contact">Contact</a></li>
+    </ul>
+  </div>
+  <div>
+    <div class="footer-nav-label">Contact</div>
+    <ul class="footer-nav">
+      <li><a href="mailto:hello@victoryprojects.org">hello@victoryprojects.org</a></li>
+    </ul>
+  </div>
+  <div class="footer-copy">
+    <span>© 2026 Victory Projects.</span>
+  </div>
+</footer>
+
+</body>
+</html>
