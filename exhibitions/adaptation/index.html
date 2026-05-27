@@ -215,8 +215,8 @@ nav {
   letter-spacing: 0.18em;
   text-transform: uppercase;
   padding: 8px 18px;
-  background: var(--teal);
-  color: var(--ink);
+  background: var(--pink);
+  color: var(--white);
   margin-bottom: 16px;
 }
 .hero-scroll-hint {
@@ -503,11 +503,11 @@ nav {
   z-index: 1;
 }
 .venue-dot.active {
-  border-color: var(--teal);
-  background: var(--teal);
+  border-color: var(--blue);
+  background: var(--blue);
 }
 .venue-dot.upcoming {
-  border-color: var(--blue);
+  border-color: var(--pink);
   background: var(--white);
 }
 .venue-name {
@@ -531,8 +531,8 @@ nav {
   letter-spacing: 0.08em;
   color: var(--ink-light);
 }
-.venue-dates.current { color: var(--teal); }
-.venue-dates.upcoming { color: var(--blue); }
+.venue-dates.current { color: var(--blue); }
+.venue-dates.upcoming { color: var(--pink); }
 
 /* Specs */
 .specs-section {
@@ -568,14 +568,16 @@ nav {
 }
 .spec-row:last-child { border-bottom: none; }
 .spec-key {
-  font-size: 12px;
+  font-family: var(--oswald);
+  font-size: 11px;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
   color: var(--ink-light);
   flex-shrink: 0;
 }
 .spec-val {
-  font-family: var(--oswald);
+  font-family: var(--dm);
   font-size: 13px;
-  letter-spacing: 0.04em;
   color: var(--ink);
   text-align: right;
 }
@@ -704,20 +706,27 @@ footer {
 .footer-brand .wordmark {
   font-family: var(--oswald);
   font-weight: 700;
-  font-size: 18px;
+  font-size: 17px;
   letter-spacing: 0.12em;
   text-transform: uppercase;
   color: var(--white);
-  margin-bottom: 10px;
+  margin-bottom: 12px;
+  display: flex;
+  align-items: baseline;
 }
-.footer-brand .wordmark span { font-weight: 300; color: rgba(250,250,250,0.4); }
-.footer-brand p { font-size: 12px; line-height: 1.7; max-width: 240px; }
+.footer-brand .wordmark .fp {
+  font-weight: 300;
+  letter-spacing: 0.18em;
+  color: rgba(250,250,250,0.6);
+  margin-left: 7px;
+}
+.footer-brand p { font-size: 12px; line-height: 1.7; max-width: 240px; color: rgba(250,250,250,0.65); }
 .footer-nav-label {
   font-family: var(--oswald);
   font-size: 10px;
   letter-spacing: 0.18em;
   text-transform: uppercase;
-  color: rgba(250,250,250,0.3);
+  color: rgba(250,250,250,0.55);
   margin-bottom: 16px;
 }
 .footer-nav { list-style: none; display: flex; flex-direction: column; gap: 10px; }
@@ -726,17 +735,17 @@ footer {
   font-size: 13px;
   letter-spacing: 0.08em;
   text-transform: uppercase;
-  color: rgba(250,250,250,0.5);
+  color: rgba(250,250,250,0.7);
   text-decoration: none;
   transition: color 0.2s;
 }
 .footer-nav a:hover { color: var(--white); }
 .footer-copy {
   font-size: 11px;
-  color: rgba(250,250,250,0.2);
+  color: rgba(250,250,250,0.5);
   margin-top: 40px;
   padding-top: 20px;
-  border-top: 1px solid rgba(250,250,250,0.08);
+  border-top: 1px solid rgba(250,250,250,0.12);
   grid-column: 1 / -1;
   display: flex;
   justify-content: space-between;
@@ -756,32 +765,152 @@ footer {
   footer { grid-template-columns: 1fr; padding: 40px 24px; }
 }
 
+/* ── CURATOR & BOOK FEATURE ── */
+.curator-feature {
+  margin-top: 52px;
+  padding: 36px 40px;
+  background: var(--off-white);
+  border-left: 3px solid var(--teal);
+}
+.curator-feature-label {
+  font-family: var(--oswald);
+  font-size: 9px;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: var(--teal);
+  margin-bottom: 8px;
+}
+.curator-feature-name {
+  font-family: var(--oswald);
+  font-weight: 700;
+  font-size: 22px;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  color: var(--ink);
+  margin-bottom: 14px;
+}
+.curator-feature-bio {
+  font-size: 14px;
+  line-height: 1.75;
+  color: var(--ink-mid);
+  margin-bottom: 12px;
+  max-width: 560px;
+}
+.curator-feature-note {
+  font-size: 13px;
+  line-height: 1.65;
+  color: var(--ink-light);
+  font-style: italic;
+  max-width: 560px;
+}
+
+.book-feature {
+  margin-top: 40px;
+  padding: 36px 40px;
+  background: var(--ink);
+  display: grid;
+  grid-template-columns: 1fr auto;
+  gap: 40px;
+  align-items: start;
+}
+.book-feature-label {
+  font-family: var(--oswald);
+  font-size: 9px;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: rgba(250,250,250,0.65);
+  margin-bottom: 8px;
+}
+.book-feature-title {
+  font-family: var(--oswald);
+  font-weight: 700;
+  font-size: 28px;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  color: var(--white);
+  line-height: 1;
+  margin-bottom: 4px;
+}
+.book-feature-publisher {
+  font-family: var(--oswald);
+  font-size: 13px;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: rgba(250,250,250,0.5);
+  margin-bottom: 16px;
+}
+.book-feature-desc {
+  font-size: 13px;
+  line-height: 1.75;
+  color: rgba(250,250,250,0.65);
+  margin-bottom: 20px;
+  max-width: 420px;
+}
+.book-feature-link {
+  font-family: var(--oswald);
+  font-size: 11px;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--teal);
+  text-decoration: none;
+  transition: opacity 0.2s;
+}
+.book-feature-link:hover { opacity: 0.7; }
+.book-cover-placeholder {
+  width: 120px;
+  height: 160px;
+  background: linear-gradient(135deg, #1a2535, #2d4a3e);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  padding: 12px;
+  text-align: center;
+  border: 1px solid rgba(250,250,250,0.1);
+}
+.book-cover-placeholder span {
+  font-family: var(--oswald);
+  font-weight: 700;
+  font-size: 13px;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--white);
+  line-height: 1.2;
+}
+.book-cover-placeholder .book-cover-sub {
+  font-weight: 300;
+  font-size: 10px;
+  color: rgba(250,250,250,0.5);
+  letter-spacing: 0.08em;
+}
+
 /* ── GALLERY & LIGHTBOX ── */
 .gallery-section {
   padding: 0;
-  background: var(--off-white);
+  background: var(--ink);
   border-bottom: 1px solid var(--rule-heavy);
 }
-.gallery-grid {
-  display: grid;
-  grid-template-columns: repeat(4, 1fr);
+.gallery-masonry {
+  columns: 3;
   gap: 3px;
-  background: var(--ink);
+  column-fill: balance;
 }
-.gallery-thumb {
+.gallery-item {
+  break-inside: avoid;
+  margin-bottom: 3px;
   position: relative;
-  aspect-ratio: 1;
   overflow: hidden;
   cursor: pointer;
 }
-.gallery-thumb img {
-  width: 100%; height: 100%;
-  object-fit: cover;
+.gallery-item img {
+  width: 100%;
+  height: auto;
   display: block;
-  transition: transform 0.4s ease, opacity 0.3s;
+  transition: opacity 0.3s, transform 0.4s ease;
 }
-.gallery-thumb:hover img { transform: scale(1.05); opacity: 0.85; }
-.gallery-thumb-caption {
+.gallery-item:hover img { opacity: 0.82; transform: scale(1.02); }
+.gallery-item-caption {
   position: absolute;
   bottom: 0; left: 0; right: 0;
   padding: 8px 12px;
@@ -792,7 +921,7 @@ footer {
   opacity: 0;
   transition: opacity 0.3s;
 }
-.gallery-thumb:hover .gallery-thumb-caption { opacity: 1; }
+.gallery-item:hover .gallery-item-caption { opacity: 1; }
 
 /* Lightbox */
 .lightbox {
@@ -870,7 +999,7 @@ footer {
   color: var(--white);
 }
 @media (max-width: 900px) {
-  .gallery-grid { grid-template-columns: repeat(2, 1fr); }
+  .gallery-masonry { columns: 2; }
   .lightbox-prev { left: 8px; }
   .lightbox-next { right: 8px; }
 }
@@ -972,28 +1101,28 @@ document.addEventListener('keydown', function(e) {
 
 <!-- LIGHTBOX GALLERY -->
 <div class="gallery-section">
-  <div class="gallery-grid" id="galleryGrid">
-    <div class="gallery-thumb" onclick="openLightbox(0)"><img src="../../images/Beauty-Salon-Milan-2022.jpg" alt="Beauty Salon, Milan, 2022"><div class="gallery-thumb-caption">Beauty Salon, Milan, 2022 — Image Cities</div></div>
-    <div class="gallery-thumb" onclick="openLightbox(1)"><img src="../../images/Flamingo-Reflection-2018.jpg" alt="Flamingo Reflection, 2018"><div class="gallery-thumb-caption">Flamingo Reflection, 2018 — Floridas</div></div>
-    <div class="gallery-thumb" onclick="openLightbox(2)"><img src="../../images/Gator-2017.jpg" alt="Gator, 2017"><div class="gallery-thumb-caption">Gator, 2017 — Floridas</div></div>
-    <div class="gallery-thumb" onclick="openLightbox(3)"><img src="../../images/Female-Lead-Times-Square-2022.jpg" alt="Female Lead, Times Square, 2022"><div class="gallery-thumb-caption">Female Lead, Times Square, 2022 — Image Cities</div></div>
-    <div class="gallery-thumb" onclick="openLightbox(4)"><img src="../../images/Beached-Boat-2019.jpg" alt="Beached Boat, 2019"><div class="gallery-thumb-caption">Beached Boat, 2019 — FloodZone</div></div>
-    <div class="gallery-thumb" onclick="openLightbox(5)"><img src="../../images/LA-On-Fire-2020.jpg" alt="LA On Fire, 2020"><div class="gallery-thumb-caption">LA On Fire, 2020 — Landscape Sublime</div></div>
-    <div class="gallery-thumb" onclick="openLightbox(6)"><img src="../../images/Beaches-2014.jpg" alt="Beaches, 2014"><div class="gallery-thumb-caption">Beaches, 2014 — Landscape Sublime</div></div>
-    <div class="gallery-thumb" onclick="openLightbox(7)"><img src="../../images/Except-Sunday-Panama-City-Beach-Florida-2021.jpg" alt="Except Sunday, 2021"><div class="gallery-thumb-caption">Except Sunday, Panama City Beach, 2021 — Floridas</div></div>
-    <div class="gallery-thumb" onclick="openLightbox(8)"><img src="../../images/Breakfas-with-Walker-Evans-1941-2020.jpg" alt="Breakfast with Walker Evans, 2020"><div class="gallery-thumb-caption">Breakfast with Walker Evans (1941), 2020 — Breakfasts</div></div>
-    <div class="gallery-thumb" onclick="openLightbox(9)"><img src="../../images/Breakfast-with-Stephen-Shore-1977-2018.jpg" alt="Breakfast with Stephen Shore, 2018"><div class="gallery-thumb-caption">Breakfast with Stephen Shore (1977), 2018 — Breakfasts</div></div>
-    <div class="gallery-thumb" onclick="openLightbox(10)"><img src="../../images/Blue-Velvet-Chair-2020.jpg" alt="Blue Velvet Chair, 2020"><div class="gallery-thumb-caption">Blue Velvet Chair, 2020 — FloodZone</div></div>
-    <div class="gallery-thumb" onclick="openLightbox(11)"><img src="../../images/Florida-Furniture-Miami-2019.jpg" alt="Florida Furniture Miami, 2019"><div class="gallery-thumb-caption">Florida Furniture, Miami, 2019 — Floridas</div></div>
-    <div class="gallery-thumb" onclick="openLightbox(12)"><img src="../../images/Barber-Shop-2018.jpg" alt="Barber Shop, 2018"><div class="gallery-thumb-caption">Barber Shop, 2018 — Floridas</div></div>
-    <div class="gallery-thumb" onclick="openLightbox(13)"><img src="../../images/Historic-Theater-Poster-Barcelona-2022.jpg" alt="Historic Theater Poster, Barcelona, 2022"><div class="gallery-thumb-caption">Historic Theater Poster, Barcelona, 2022 — Image Cities</div></div>
-    <div class="gallery-thumb" onclick="openLightbox(14)"><img src="../../images/Pink-Coat-Moscow-2021.jpg" alt="Pink Coat, Moscow, 2021"><div class="gallery-thumb-caption">Pink Coat, Moscow, 2021 — Image Cities</div></div>
-    <div class="gallery-thumb" onclick="openLightbox(15)"><img src="../../images/Advertisment-on-Opera-House-Paris-2021.jpg" alt="Advertisement on Opera House, Paris, 2021"><div class="gallery-thumb-caption">Advertisement on Opera House, Paris, 2021 — Image Cities</div></div>
-    <div class="gallery-thumb" onclick="openLightbox(16)"><img src="../../images/Dome-House-with-an-Upside-Down-Flag-2021.jpg" alt="Dome House, 2021"><div class="gallery-thumb-caption">Dome House with an Upside-Down Flag, 2021 — Floridas</div></div>
-    <div class="gallery-thumb" onclick="openLightbox(17)"><img src="../../images/Construction-in-South-Beach-I-2017.jpg" alt="Construction in South Beach, 2017"><div class="gallery-thumb-caption">Construction in South Beach I, 2017 — Floridas</div></div>
-    <div class="gallery-thumb" onclick="openLightbox(18)"><img src="../../images/Mangroves-2017.jpg" alt="Mangroves, 2017"><div class="gallery-thumb-caption">Mangroves, 2017 — Floridas</div></div>
-    <div class="gallery-thumb" onclick="openLightbox(19)"><img src="../../images/Breakfast-with-William-Eggleston-1976-2017.jpg" alt="Breakfast with William Eggleston, 2017"><div class="gallery-thumb-caption">Breakfast with William Eggleston (1976), 2017 — Breakfasts</div></div>
-    <div class="gallery-thumb" onclick="openLightbox(20)"><img src="../../images/The-Tea-Room-Vizcaya-2018.jpg" alt="The Tea Room, Vizcaya, 2018"><div class="gallery-thumb-caption">The Tea Room, Vizcaya, 2018 — FloodZone</div></div>
+  <div class="gallery-masonry" id="galleryGrid">
+    <div class="gallery-item" onclick="openLightbox(0)"><img src="../../images/Beauty-Salon-Milan-2022.jpg" alt="Beauty Salon, Milan, 2022"><div class="gallery-item-caption">Beauty Salon, Milan, 2022 — Image Cities</div></div>
+    <div class="gallery-item" onclick="openLightbox(1)"><img src="../../images/Flamingo-Reflection-2018.jpg" alt="Flamingo Reflection, 2018"><div class="gallery-item-caption">Flamingo Reflection, 2018 — Floridas</div></div>
+    <div class="gallery-item" onclick="openLightbox(2)"><img src="../../images/Gator-2017.jpg" alt="Gator, 2017"><div class="gallery-item-caption">Gator, 2017 — Floridas</div></div>
+    <div class="gallery-item" onclick="openLightbox(3)"><img src="../../images/Female-Lead-Times-Square-2022.jpg" alt="Female Lead, Times Square, 2022"><div class="gallery-item-caption">Female Lead, Times Square, 2022 — Image Cities</div></div>
+    <div class="gallery-item" onclick="openLightbox(4)"><img src="../../images/Beached-Boat-2019.jpg" alt="Beached Boat, 2019"><div class="gallery-item-caption">Beached Boat, 2019 — FloodZone</div></div>
+    <div class="gallery-item" onclick="openLightbox(5)"><img src="../../images/LA-On-Fire-2020.jpg" alt="LA On Fire, 2020"><div class="gallery-item-caption">LA On Fire, 2020 — Landscape Sublime</div></div>
+    <div class="gallery-item" onclick="openLightbox(6)"><img src="../../images/Beaches-2014.jpg" alt="Beaches, 2014"><div class="gallery-item-caption">Beaches, 2014 — Landscape Sublime</div></div>
+    <div class="gallery-item" onclick="openLightbox(7)"><img src="../../images/Except-Sunday-Panama-City-Beach-Florida-2021.jpg" alt="Except Sunday, 2021"><div class="gallery-item-caption">Except Sunday, Panama City Beach, 2021 — Floridas</div></div>
+    <div class="gallery-item" onclick="openLightbox(8)"><img src="../../images/Breakfas-with-Walker-Evans-1941-2020.jpg" alt="Breakfast with Walker Evans, 2020"><div class="gallery-item-caption">Breakfast with Walker Evans (1941), 2020 — Breakfasts</div></div>
+    <div class="gallery-item" onclick="openLightbox(9)"><img src="../../images/Breakfast-with-Stephen-Shore-1977-2018.jpg" alt="Breakfast with Stephen Shore, 2018"><div class="gallery-item-caption">Breakfast with Stephen Shore (1977), 2018 — Breakfasts</div></div>
+    <div class="gallery-item" onclick="openLightbox(10)"><img src="../../images/Blue-Velvet-Chair-2020.jpg" alt="Blue Velvet Chair, 2020"><div class="gallery-item-caption">Blue Velvet Chair, 2020 — FloodZone</div></div>
+    <div class="gallery-item" onclick="openLightbox(11)"><img src="../../images/Florida-Furniture-Miami-2019.jpg" alt="Florida Furniture Miami, 2019"><div class="gallery-item-caption">Florida Furniture, Miami, 2019 — Floridas</div></div>
+    <div class="gallery-item" onclick="openLightbox(12)"><img src="../../images/Barber-Shop-2018.jpg" alt="Barber Shop, 2018"><div class="gallery-item-caption">Barber Shop, 2018 — Floridas</div></div>
+    <div class="gallery-item" onclick="openLightbox(13)"><img src="../../images/Historic-Theater-Poster-Barcelona-2022.jpg" alt="Historic Theater Poster, Barcelona, 2022"><div class="gallery-item-caption">Historic Theater Poster, Barcelona, 2022 — Image Cities</div></div>
+    <div class="gallery-item" onclick="openLightbox(14)"><img src="../../images/Pink-Coat-Moscow-2021.jpg" alt="Pink Coat, Moscow, 2021"><div class="gallery-item-caption">Pink Coat, Moscow, 2021 — Image Cities</div></div>
+    <div class="gallery-item" onclick="openLightbox(15)"><img src="../../images/Advertisment-on-Opera-House-Paris-2021.jpg" alt="Advertisement on Opera House, Paris, 2021"><div class="gallery-item-caption">Advertisement on Opera House, Paris, 2021 — Image Cities</div></div>
+    <div class="gallery-item" onclick="openLightbox(16)"><img src="../../images/Dome-House-with-an-Upside-Down-Flag-2021.jpg" alt="Dome House, 2021"><div class="gallery-item-caption">Dome House with an Upside-Down Flag, 2021 — Floridas</div></div>
+    <div class="gallery-item" onclick="openLightbox(17)"><img src="../../images/Construction-in-South-Beach-I-2017.jpg" alt="Construction in South Beach, 2017"><div class="gallery-item-caption">Construction in South Beach I, 2017 — Floridas</div></div>
+    <div class="gallery-item" onclick="openLightbox(18)"><img src="../../images/Mangroves-2017.jpg" alt="Mangroves, 2017"><div class="gallery-item-caption">Mangroves, 2017 — Floridas</div></div>
+    <div class="gallery-item" onclick="openLightbox(19)"><img src="../../images/Breakfast-with-William-Eggleston-1976-2017.jpg" alt="Breakfast with William Eggleston, 2017"><div class="gallery-item-caption">Breakfast with William Eggleston (1976), 2017 — Breakfasts</div></div>
+    <div class="gallery-item" onclick="openLightbox(20)"><img src="../../images/The-Tea-Room-Vizcaya-2018.jpg" alt="The Tea Room, Vizcaya, 2018"><div class="gallery-item-caption">The Tea Room, Vizcaya, 2018 — FloodZone</div></div>
   </div>
 </div>
 
@@ -1014,8 +1143,6 @@ document.addEventListener('keydown', function(e) {
 
   <!-- LEFT: TEXT -->
   <div class="exh-text">
-    <p class="curator-line">Curated by <a href="#">Taous Dahmani</a></p>
-
     <p class="exh-statement">
       A modern-day flâneuse — observing the everyday to reveal its absurdities, its contradictions, its quietly accumulated violence.
     </p>
@@ -1041,6 +1168,31 @@ document.addEventListener('keydown', function(e) {
       <div class="theme-item">
         <div class="theme-name">The Photographic Canon</div>
         <div class="theme-desc">The Breakfasts series stages playful, affectionate, and pointed conversations with the history of photography itself — Shore, Evans, and others brought into the present tense.</div>
+      </div>
+    </div>
+
+    <!-- CURATOR FEATURE -->
+    <div class="curator-feature">
+      <div class="curator-feature-label">Curator</div>
+      <div class="curator-feature-name">Taous Dahmani</div>
+      <p class="curator-feature-bio">Taous Dahmani is a French-Algerian writer and curator based in London. She has written for Aperture, The Guardian, and Foam Magazine, and has curated exhibitions at institutions across Europe. Her curatorial essay for <em>Adaptation</em> situates Samoylova's practice within contemporary debates around environmental photography and the politics of looking.</p>
+      <p class="curator-feature-note">New institutions may commission their own curatorial text. Dahmani is available for catalogue contributions and public programming.</p>
+    </div>
+
+    <!-- BOOK FEATURE -->
+    <div class="book-feature">
+      <div class="book-feature-text">
+        <div class="book-feature-label">Publication</div>
+        <div class="book-feature-title">Adaptation</div>
+        <div class="book-feature-publisher">Thames &amp; Hudson, 2024</div>
+        <p class="book-feature-desc">The accompanying monograph features over 150 photographs across all five series, with texts by Taous Dahmani and Anastasia Samoylova. Available in the exhibition and through Thames &amp; Hudson internationally.</p>
+        <a href="https://thamesandhudson.com" target="_blank" class="book-feature-link">Publisher's page →</a>
+      </div>
+      <div class="book-feature-cover">
+        <div class="book-cover-placeholder">
+          <span>ADAPTATION</span>
+          <span class="book-cover-sub">Anastasia Samoylova</span>
+        </div>
       </div>
     </div>
   </div>
@@ -1123,7 +1275,7 @@ document.addEventListener('keydown', function(e) {
 <!-- FOOTER -->
 <footer>
   <div class="footer-brand">
-    <div class="wordmark">Victory<span>Projects</span></div>
+    <div class="wordmark">Victory<span class="fp">Projects</span></div>
     <p>Placing significant photography exhibitions with institutions internationally. Based in Lisbon, Portugal.</p>
   </div>
   <div>
