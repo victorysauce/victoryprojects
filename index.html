@@ -17,24 +17,19 @@
   --ink-light: #888880;
   --rule: rgba(13,13,13,0.10);
   --rule-heavy: rgba(13,13,13,0.18);
-
-  /* Victory brand — muted for institutional use */
   --blue: #1E3FA8;
   --blue-pale: #E6EAF7;
   --teal: #0A9E8E;
   --teal-pale: #E2F4F2;
   --pink: #C42D59;
   --pink-pale: #F7E5EC;
-
   --oswald: 'Oswald', sans-serif;
   --dm: 'Source Sans 3', sans-serif;
   --serif: 'Source Serif 4', serif;
 }
 
 * { margin: 0; padding: 0; box-sizing: border-box; }
-
 html { scroll-behavior: smooth; }
-
 body {
   background: var(--white);
   color: var(--ink);
@@ -57,11 +52,9 @@ nav {
   padding: 0 48px;
   height: 64px;
 }
-
 .nav-wordmark {
   display: flex;
   align-items: baseline;
-  gap: 0;
   text-decoration: none;
 }
 .nav-wordmark .victory {
@@ -82,15 +75,13 @@ nav {
   margin-left: 7px;
 }
 .nav-wordmark .dot {
-  width: 5px;
-  height: 5px;
+  width: 5px; height: 5px;
   border-radius: 50%;
   background: var(--pink);
   margin: 0 0 2px 7px;
   flex-shrink: 0;
   align-self: center;
 }
-
 .nav-links {
   display: flex;
   gap: 36px;
@@ -108,16 +99,11 @@ nav {
   transition: color 0.2s;
 }
 .nav-links a:hover { color: var(--ink); }
-
 .nav-cta {
-  font-family: var(--oswald);
-  font-weight: 500;
-  font-size: 11px;
-  letter-spacing: 0.14em;
-  text-transform: uppercase;
   color: var(--blue) !important;
   border: 1px solid var(--blue);
   padding: 7px 16px;
+  transition: all 0.2s !important;
 }
 .nav-cta:hover {
   background: var(--blue) !important;
@@ -127,28 +113,50 @@ nav {
 /* ── HERO ── */
 .hero {
   margin-top: 64px;
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  min-height: calc(100vh - 64px);
-  border-bottom: 1px solid var(--rule-heavy);
+  height: calc(100vh - 64px);
+  position: relative;
+  overflow: hidden;
+  background: var(--ink);
+  display: flex;
+  align-items: flex-end;
 }
 
-.hero-left {
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-  padding: 80px 56px 60px;
-  border-right: 1px solid var(--rule-heavy);
-  background: var(--white);
+.hero-bg {
+  position: absolute;
+  inset: 0;
+  /* Placeholder — replace with Anastasia's image */
+  background: linear-gradient(160deg, #0a1020 0%, #1a2535 30%, #2d4a3e 65%, #6b8f71 100%);
 }
+
+.hero-vignette {
+  position: absolute;
+  inset: 0;
+  background:
+    linear-gradient(to top, rgba(13,13,13,0.92) 0%, rgba(13,13,13,0.3) 45%, transparent 100%),
+    linear-gradient(to right, rgba(13,13,13,0.5) 0%, transparent 60%);
+  z-index: 1;
+}
+
+.hero-content {
+  position: relative;
+  z-index: 2;
+  padding: 0 64px 72px;
+  width: 100%;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  align-items: flex-end;
+  gap: 48px;
+}
+
+.hero-left {}
 
 .hero-eyebrow {
   font-family: var(--oswald);
   font-size: 10px;
-  letter-spacing: 0.22em;
+  letter-spacing: 0.24em;
   text-transform: uppercase;
   color: var(--teal);
-  margin-bottom: 20px;
+  margin-bottom: 18px;
   display: flex;
   align-items: center;
   gap: 10px;
@@ -161,269 +169,275 @@ nav {
   background: var(--teal);
 }
 
+.hero-artist {
+  font-family: var(--oswald);
+  font-weight: 300;
+  font-size: clamp(13px, 1.4vw, 17px);
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: rgba(250,250,250,0.6);
+  margin-bottom: 10px;
+}
+
 .hero-title {
   font-family: var(--oswald);
   font-weight: 700;
-  font-size: clamp(52px, 6vw, 88px);
-  line-height: 0.88;
-  letter-spacing: -0.01em;
+  font-size: clamp(60px, 9vw, 120px);
+  line-height: 0.87;
   text-transform: uppercase;
-  color: var(--ink);
-  margin-bottom: 32px;
-}
-.hero-title .accent {
-  color: var(--blue);
+  letter-spacing: -0.01em;
+  color: var(--white);
+  margin-bottom: 36px;
 }
 .hero-title .hollow {
-  -webkit-text-stroke: 2px var(--ink);
+  -webkit-text-stroke: 1.5px rgba(250,250,250,0.35);
   color: transparent;
+  display: block;
 }
 
-.hero-statement {
-  font-family: var(--serif);
-  font-style: italic;
-  font-size: 20px;
-  line-height: 1.55;
-  color: var(--ink-mid);
-  max-width: 360px;
-  margin-bottom: 48px;
-}
-
-.hero-meta {
-  display: flex;
-  flex-direction: column;
-  gap: 20px;
-}
-
-.hero-stat {
-  display: flex;
-  align-items: baseline;
-  gap: 10px;
-  padding-top: 18px;
-  border-top: 1px solid var(--rule);
-}
-.hero-stat-num {
-  font-family: var(--oswald);
-  font-weight: 700;
-  font-size: 36px;
-  letter-spacing: -0.01em;
-  color: var(--ink);
-}
-.hero-stat-label {
-  font-family: var(--dm);
-  font-size: 12px;
-  color: var(--ink-light);
-  letter-spacing: 0.04em;
-}
-
-.hero-right {
-  position: relative;
-  overflow: hidden;
-  background: var(--ink);
-}
-
-.hero-image-placeholder {
-  width: 100%;
-  height: 100%;
-  background: linear-gradient(135deg, #0D0D0D 0%, #1a1a2e 40%, #0EC4B0 100%);
-  display: flex;
-  align-items: flex-end;
-  padding: 40px;
-}
-
-.hero-caption {
-  background: rgba(13,13,13,0.7);
-  backdrop-filter: blur(8px);
-  padding: 16px 20px;
-  border-left: 2px solid var(--teal);
-}
-.hero-caption-title {
+.hero-cta {
+  display: inline-flex;
+  align-items: center;
+  gap: 14px;
   font-family: var(--oswald);
   font-weight: 500;
-  font-size: 13px;
-  letter-spacing: 0.08em;
+  font-size: 12px;
+  letter-spacing: 0.16em;
   text-transform: uppercase;
   color: var(--white);
-  margin-bottom: 4px;
-}
-.hero-caption-meta {
-  font-size: 12px;
-  color: rgba(250,250,247,0.55);
-  font-style: italic;
-}
-
-/* ── SECTION STRUCTURE ── */
-.section {
-  padding: 80px 48px;
-  border-bottom: 1px solid var(--rule-heavy);
-}
-
-.section-header {
-  display: flex;
-  align-items: baseline;
-  justify-content: space-between;
-  margin-bottom: 52px;
-  padding-bottom: 18px;
-  border-bottom: 1px solid var(--rule);
-}
-
-.section-label {
-  font-family: var(--oswald);
-  font-weight: 700;
-  font-size: 13px;
-  letter-spacing: 0.18em;
-  text-transform: uppercase;
-  color: var(--ink);
-  display: flex;
-  align-items: center;
-  gap: 12px;
-}
-.section-label::before {
-  content: '';
-  display: block;
-  width: 18px;
-  height: 2px;
-  background: var(--pink);
-}
-
-.section-link {
-  font-family: var(--oswald);
-  font-size: 11px;
-  letter-spacing: 0.14em;
-  text-transform: uppercase;
-  color: var(--blue);
   text-decoration: none;
-  display: flex;
-  align-items: center;
-  gap: 8px;
-  transition: gap 0.2s;
+  border-bottom: 1px solid rgba(250,250,250,0.3);
+  padding-bottom: 6px;
+  transition: all 0.25s;
 }
-.section-link:hover { gap: 14px; }
-.section-link::after { content: '→'; }
-
-/* ── EXHIBITIONS GRID ── */
-.exhibitions-grid {
-  display: grid;
-  grid-template-columns: 2fr 1fr 1fr;
-  grid-template-rows: auto;
-  gap: 1px;
-  background: var(--rule-heavy);
-  border: 1px solid var(--rule-heavy);
+.hero-cta:hover {
+  gap: 20px;
+  border-color: var(--teal);
+  color: var(--teal);
 }
+.hero-cta::after { content: '→'; }
 
-.exh-card {
-  background: var(--white);
+.hero-right {
   display: flex;
   flex-direction: column;
-  text-decoration: none;
-  color: inherit;
-  transition: background 0.2s;
-  position: relative;
-  overflow: hidden;
-}
-.exh-card:hover { background: var(--off-white); }
-
-.exh-card.featured {
-  grid-row: 1 / 3;
+  align-items: flex-end;
+  gap: 24px;
 }
 
-.exh-image {
-  width: 100%;
-  aspect-ratio: 4/3;
-  overflow: hidden;
-}
-.exh-card.featured .exh-image {
-  aspect-ratio: unset;
-  flex: 1;
-  min-height: 380px;
-}
-
-.img-fill {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  display: block;
-  transition: transform 0.5s ease;
-}
-.exh-card:hover .img-fill { transform: scale(1.03); }
-
-/* gradient placeholder images */
-.ph-1 { background: linear-gradient(135deg, #1a1a2e 0%, #0A9E8E 60%, #C42D59 100%); }
-.ph-2 { background: linear-gradient(135deg, #0a1628 0%, #1E3FA8 70%); }
-.ph-3 { background: linear-gradient(160deg, #1a0a2e 0%, #C42D59 80%); }
-.ph-4 { background: linear-gradient(135deg, #0D0D0D 0%, #0EC4B0 100%); }
-.ph-5 { background: linear-gradient(135deg, #0a0a18 0%, #1E3FA8 50%, #0A9E8E 100%); }
-
-.exh-body {
-  padding: 22px 24px 28px;
-}
-
-.exh-tag {
+.hero-tag {
   display: inline-block;
   font-family: var(--oswald);
   font-size: 9px;
-  letter-spacing: 0.18em;
+  letter-spacing: 0.2em;
   text-transform: uppercase;
-  padding: 4px 10px;
-  margin-bottom: 10px;
+  padding: 7px 16px;
+  background: var(--teal);
+  color: var(--ink);
 }
-.tag-traveling { background: var(--blue-pale); color: var(--blue); }
-.tag-current { background: var(--teal-pale); color: var(--teal); }
-.tag-upcoming { background: var(--pink-pale); color: var(--pink); }
+
+.hero-provenance {
+  text-align: right;
+  border-right: 2px solid rgba(250,250,250,0.15);
+  padding-right: 20px;
+}
+.hero-provenance-label {
+  font-family: var(--oswald);
+  font-size: 9px;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: rgba(250,250,250,0.3);
+  margin-bottom: 8px;
+}
+.hero-provenance-venue {
+  font-family: var(--oswald);
+  font-weight: 500;
+  font-size: 14px;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: rgba(250,250,250,0.8);
+  line-height: 1.3;
+}
+.hero-provenance-date {
+  font-size: 12px;
+  color: rgba(250,250,250,0.35);
+  margin-top: 4px;
+}
+
+/* ── EXHIBITION FEATURE ── */
+.exh-feature {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  min-height: 70vh;
+  border-bottom: 1px solid var(--rule-heavy);
+}
+
+.exh-images {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-template-rows: 1fr 1fr;
+  gap: 3px;
+  background: var(--ink);
+  overflow: hidden;
+}
+
+.exh-img {
+  overflow: hidden;
+  position: relative;
+}
+.exh-img.tall { grid-row: 1 / 3; }
+
+.img-fill {
+  width: 100%; height: 100%;
+  object-fit: cover;
+  display: block;
+  transition: transform 0.6s ease;
+}
+.exh-img:hover .img-fill { transform: scale(1.04); }
+
+.ph-a1 { background: linear-gradient(135deg, #1a2e1a 0%, #4a7a5a 50%, #8ab870 100%); }
+.ph-a2 { background: linear-gradient(160deg, #2a1a0a 0%, #c87a3a 70%, #e8c060 100%); }
+.ph-a3 { background: linear-gradient(135deg, #0a1a2e 0%, #1a4a6a 60%, #40a0c0 100%); }
+.ph-a4 { background: linear-gradient(160deg, #2e0a1a 0%, #8a2a4a 60%, #c06080 100%); }
+
+.exh-info {
+  padding: 64px 56px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  border-left: 1px solid var(--rule-heavy);
+}
+
+.exh-info-top {}
+
+.exh-label {
+  font-family: var(--oswald);
+  font-size: 10px;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: var(--ink-light);
+  margin-bottom: 24px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+.exh-label::before {
+  content: '';
+  display: block;
+  width: 18px;
+  height: 1px;
+  background: var(--pink);
+}
+
+.exh-artist-name {
+  font-family: var(--oswald);
+  font-weight: 300;
+  font-size: 14px;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--ink-light);
+  margin-bottom: 8px;
+}
 
 .exh-title {
   font-family: var(--oswald);
   font-weight: 700;
-  font-size: 20px;
-  letter-spacing: 0.01em;
+  font-size: clamp(32px, 4vw, 52px);
+  line-height: 0.9;
   text-transform: uppercase;
-  line-height: 1.05;
+  letter-spacing: -0.01em;
   color: var(--ink);
+  margin-bottom: 28px;
+}
+
+.exh-statement {
+  font-family: var(--serif);
+  font-style: italic;
+  font-size: 18px;
+  line-height: 1.6;
+  color: var(--ink-mid);
+  margin-bottom: 28px;
+  max-width: 420px;
+}
+
+.exh-series {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  margin-bottom: 32px;
+}
+.series-tag {
+  font-family: var(--oswald);
+  font-size: 9px;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  padding: 5px 12px;
+  background: var(--off-white);
+  color: var(--ink-light);
+  border: 1px solid var(--rule-heavy);
+}
+
+.exh-info-bottom {}
+
+.exh-provenance {
+  padding: 24px 0;
+  border-top: 1px solid var(--rule);
+  border-bottom: 1px solid var(--rule);
+  margin-bottom: 28px;
+}
+.provenance-label {
+  font-family: var(--oswald);
+  font-size: 9px;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--ink-light);
   margin-bottom: 8px;
 }
-.exh-card.featured .exh-title { font-size: 30px; }
-
-.exh-artist {
-  font-family: var(--dm);
+.provenance-text {
   font-size: 13px;
-  color: var(--ink-light);
-  margin-bottom: 12px;
+  line-height: 1.65;
+  color: var(--ink-mid);
+  font-style: italic;
 }
+.provenance-text strong { color: var(--ink); font-style: normal; font-weight: 500; }
 
-.exh-venue {
-  font-family: var(--oswald);
-  font-size: 11px;
-  letter-spacing: 0.12em;
-  text-transform: uppercase;
-  color: var(--ink-light);
-  display: flex;
+.exh-link {
+  display: inline-flex;
   align-items: center;
-  gap: 6px;
-  border-top: 1px solid var(--rule);
-  padding-top: 12px;
-  margin-top: 12px;
+  gap: 12px;
+  font-family: var(--oswald);
+  font-weight: 500;
+  font-size: 12px;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--ink);
+  text-decoration: none;
+  border-bottom: 1px solid var(--rule-heavy);
+  padding-bottom: 6px;
+  transition: all 0.25s;
 }
-.exh-venue::before {
-  content: '';
-  width: 4px;
-  height: 4px;
-  border-radius: 50%;
-  background: var(--teal);
-  flex-shrink: 0;
+.exh-link:hover {
+  gap: 18px;
+  color: var(--blue);
+  border-color: var(--blue);
 }
+.exh-link::after { content: '→'; }
 
-/* ── ABOUT STRIP ── */
-.about-strip {
-  background: var(--ink);
-  color: var(--white);
-  padding: 80px 48px;
+/* ── ABOUT ── */
+.about {
   display: grid;
   grid-template-columns: 1fr 1fr;
-  gap: 80px;
-  align-items: center;
+  border-bottom: 1px solid var(--rule-heavy);
 }
 
-.about-left .about-label {
+.about-left {
+  background: var(--ink);
+  padding: 80px 64px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.about-label {
   font-family: var(--oswald);
   font-size: 10px;
   letter-spacing: 0.22em;
@@ -434,7 +448,7 @@ nav {
   align-items: center;
   gap: 10px;
 }
-.about-left .about-label::before {
+.about-label::before {
   content: '';
   display: block;
   width: 24px;
@@ -445,501 +459,182 @@ nav {
 .about-title {
   font-family: var(--oswald);
   font-weight: 700;
-  font-size: clamp(36px, 4vw, 60px);
-  line-height: 0.9;
+  font-size: clamp(40px, 5vw, 72px);
+  line-height: 0.88;
   text-transform: uppercase;
   color: var(--white);
-  margin-bottom: 8px;
 }
 .about-title .hollow {
-  -webkit-text-stroke: 1.5px rgba(250,250,247,0.35);
+  -webkit-text-stroke: 1.5px rgba(250,250,250,0.25);
   color: transparent;
   display: block;
 }
 
-.about-right p {
+.about-right {
+  padding: 80px 64px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.about-text p {
   font-size: 15px;
-  line-height: 1.75;
-  color: rgba(250,250,247,0.7);
+  line-height: 1.8;
+  color: var(--ink-mid);
   margin-bottom: 20px;
+  max-width: 480px;
 }
-.about-right p strong {
-  color: var(--white);
-  font-weight: 500;
-}
+.about-text p strong { color: var(--ink); font-weight: 500; }
 
-.about-sub-grid {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 0;
-  border-top: 1px solid rgba(250,250,247,0.12);
-  margin-top: 32px;
-}
-.about-sub-item {
-  padding: 24px 0 24px 24px;
-  border-right: 1px solid rgba(250,250,247,0.08);
-}
-.about-sub-item:first-child { padding-left: 0; }
-.about-sub-item:last-child { border-right: none; }
-.about-sub-num {
-  font-family: var(--oswald);
-  font-weight: 700;
-  font-size: 40px;
-  letter-spacing: -0.02em;
-  color: var(--white);
-  line-height: 1;
-  margin-bottom: 4px;
-}
-.about-sub-num span { color: var(--teal); }
-.about-sub-label {
-  font-size: 12px;
-  color: rgba(250,250,247,0.45);
-  letter-spacing: 0.04em;
-}
-
-/* ── WORKSHOPS STRIP ── */
-.workshops-strip {
-  background: var(--blue-pale);
-  padding: 80px 48px;
-  display: grid;
-  grid-template-columns: 1fr 2fr;
-  gap: 80px;
-  align-items: start;
-  border-bottom: 1px solid var(--rule-heavy);
-}
-
-.workshops-label {
-  font-family: var(--oswald);
-  font-size: 10px;
-  letter-spacing: 0.22em;
-  text-transform: uppercase;
-  color: var(--blue);
-  margin-bottom: 16px;
-  display: flex;
-  align-items: center;
-  gap: 10px;
-}
-.workshops-label::before {
-  content: '';
-  display: block;
-  width: 24px;
-  height: 1px;
-  background: var(--blue);
-}
-
-.workshops-heading {
-  font-family: var(--oswald);
-  font-weight: 700;
-  font-size: clamp(28px, 3vw, 44px);
-  line-height: 0.9;
-  text-transform: uppercase;
-  color: var(--ink);
-  margin-bottom: 16px;
-}
-.workshops-heading em {
-  font-style: normal;
-  color: var(--blue);
-}
-
-.workshops-by {
-  font-family: var(--dm);
-  font-size: 13px;
-  color: var(--ink-light);
-  margin-bottom: 28px;
-  display: flex;
-  align-items: center;
-  gap: 6px;
-}
-.workshops-by a {
-  color: var(--blue);
-  text-decoration: none;
-  font-weight: 500;
-}
-
-.workshops-btn {
-  display: inline-block;
-  font-family: var(--oswald);
-  font-weight: 500;
-  font-size: 12px;
-  letter-spacing: 0.14em;
-  text-transform: uppercase;
-  color: var(--blue);
-  border: 1px solid var(--blue);
-  padding: 10px 24px;
-  text-decoration: none;
-  transition: all 0.2s;
-}
-.workshops-btn:hover {
-  background: var(--blue);
-  color: var(--white);
-}
-
-.workshops-list {
-  display: flex;
-  flex-direction: column;
-  gap: 0;
-}
-
-.workshop-item {
-  display: grid;
-  grid-template-columns: 80px 1fr auto;
-  gap: 20px;
-  align-items: center;
-  padding: 22px 0;
-  border-bottom: 1px solid var(--rule);
-  text-decoration: none;
-  color: inherit;
-  transition: padding-left 0.2s;
-}
-.workshop-item:last-child { border-bottom: none; }
-.workshop-item:hover { padding-left: 6px; }
-
-.workshop-date {
-  font-family: var(--oswald);
-  font-size: 11px;
-  letter-spacing: 0.1em;
-  text-transform: uppercase;
-  color: var(--pink);
-}
-.workshop-name {
-  font-family: var(--oswald);
-  font-weight: 500;
-  font-size: 16px;
-  letter-spacing: 0.02em;
-  text-transform: uppercase;
-  color: var(--ink);
-}
-.workshop-location {
-  font-size: 12px;
-  color: var(--ink-light);
-  margin-top: 3px;
-}
-.workshop-arrow {
-  font-family: var(--oswald);
-  font-size: 14px;
-  color: var(--ink-light);
-  transition: color 0.2s;
-}
-.workshop-item:hover .workshop-arrow { color: var(--blue); }
-
-/* ── NEWS ── */
-.news-grid {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 1px;
-  background: var(--rule-heavy);
-  border: 1px solid var(--rule-heavy);
-}
-
-.news-card {
+/* ── CONTACT ── */
+.contact {
   background: var(--white);
-  padding: 28px 28px 32px;
-  text-decoration: none;
-  color: inherit;
-  display: flex;
-  flex-direction: column;
-  transition: background 0.2s;
-}
-.news-card:hover { background: var(--off-white); }
-
-.news-date {
-  font-family: var(--oswald);
-  font-size: 10px;
-  letter-spacing: 0.16em;
-  text-transform: uppercase;
-  color: var(--ink-light);
-  margin-bottom: 14px;
-}
-
-.news-title {
-  font-family: var(--oswald);
-  font-weight: 500;
-  font-size: 18px;
-  letter-spacing: 0.01em;
-  text-transform: uppercase;
-  line-height: 1.1;
-  color: var(--ink);
-  margin-bottom: 10px;
-  flex: 1;
-}
-
-.news-excerpt {
-  font-size: 13px;
-  line-height: 1.65;
-  color: var(--ink-light);
-  margin-bottom: 20px;
-}
-
-.news-read {
-  font-family: var(--oswald);
-  font-size: 10px;
-  letter-spacing: 0.16em;
-  text-transform: uppercase;
-  color: var(--blue);
-  display: flex;
+  padding: 80px 64px;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 80px;
   align-items: center;
-  gap: 6px;
-  transition: gap 0.2s;
-}
-.news-card:hover .news-read { gap: 12px; }
-.news-read::after { content: '→'; }
-
-/* ── BRAND FAMILY FOOTER ── */
-.brand-family {
-  background: var(--paper);
-  padding: 60px 48px;
   border-bottom: 1px solid var(--rule-heavy);
 }
 
-.brand-family-label {
+.contact-left {}
+.contact-label {
   font-family: var(--oswald);
   font-size: 10px;
   letter-spacing: 0.22em;
   text-transform: uppercase;
   color: var(--ink-light);
-  margin-bottom: 32px;
+  margin-bottom: 20px;
   display: flex;
   align-items: center;
   gap: 10px;
 }
-.brand-family-label::before {
+.contact-label::before {
   content: '';
   display: block;
   width: 18px;
   height: 1px;
-  background: var(--ink-light);
+  background: var(--pink);
 }
 
-.brand-pills {
+.contact-heading {
+  font-family: var(--oswald);
+  font-weight: 700;
+  font-size: clamp(28px, 3.5vw, 48px);
+  line-height: 0.92;
+  text-transform: uppercase;
+  color: var(--ink);
+  margin-bottom: 24px;
+}
+
+.contact-sub {
+  font-size: 15px;
+  line-height: 1.75;
+  color: var(--ink-mid);
+  max-width: 400px;
+}
+
+.contact-right {
   display: flex;
-  gap: 12px;
-  flex-wrap: wrap;
+  flex-direction: column;
+  gap: 16px;
 }
 
-.brand-pill {
+.contact-btn {
   display: flex;
   align-items: center;
-  gap: 12px;
-  padding: 14px 22px;
-  border: 1px solid var(--rule-heavy);
-  background: var(--white);
+  justify-content: space-between;
+  padding: 20px 24px;
+  font-family: var(--oswald);
+  font-weight: 500;
+  font-size: 13px;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
   text-decoration: none;
   transition: all 0.2s;
 }
-.brand-pill:hover {
+.contact-btn.primary {
   background: var(--ink);
-  border-color: var(--ink);
+  color: var(--white);
+  border: 1px solid var(--ink);
 }
-.brand-pill:hover .pill-name { color: var(--white); }
-.brand-pill:hover .pill-meta { color: rgba(250,250,247,0.5); }
-
-.pill-name {
-  font-family: var(--oswald);
-  font-weight: 700;
-  font-size: 14px;
-  letter-spacing: 0.1em;
-  text-transform: uppercase;
+.contact-btn.primary:hover { background: var(--blue); border-color: var(--blue); }
+.contact-btn.secondary {
+  background: transparent;
   color: var(--ink);
-  transition: color 0.2s;
+  border: 1px solid var(--rule-heavy);
 }
-.pill-meta {
-  font-size: 11px;
-  color: var(--ink-light);
-  transition: color 0.2s;
-}
-.pill-dot {
-  width: 4px;
-  height: 4px;
-  border-radius: 50%;
-  flex-shrink: 0;
-}
-.pill-dot.blue { background: var(--blue); }
-.pill-dot.teal { background: var(--teal); }
-.pill-dot.pink { background: var(--pink); }
+.contact-btn.secondary:hover { border-color: var(--ink); }
 
 /* ── FOOTER ── */
 footer {
   background: var(--ink);
-  color: rgba(250,250,247,0.55);
-  padding: 48px;
+  padding: 48px 64px;
   display: grid;
   grid-template-columns: 1fr 1fr 1fr;
   gap: 40px;
-  align-items: start;
+  border-top: 2px solid var(--pink);
 }
-
 .footer-brand .wordmark {
   font-family: var(--oswald);
   font-weight: 700;
-  font-size: 18px;
+  font-size: 17px;
   letter-spacing: 0.12em;
   text-transform: uppercase;
   color: var(--white);
-  margin-bottom: 10px;
+  margin-bottom: 12px;
 }
-.footer-brand .wordmark span {
-  font-weight: 300;
-  color: rgba(250,250,247,0.45);
-}
+.footer-brand .wordmark span { font-weight: 300; color: rgba(250,250,250,0.35); margin-left: 6px; }
 .footer-brand p {
   font-size: 12px;
-  line-height: 1.7;
-  max-width: 240px;
+  line-height: 1.75;
+  color: rgba(250,250,250,0.45);
+  max-width: 220px;
 }
-
 .footer-nav-label {
   font-family: var(--oswald);
   font-size: 10px;
   letter-spacing: 0.18em;
   text-transform: uppercase;
-  color: rgba(250,250,247,0.35);
+  color: rgba(250,250,250,0.28);
   margin-bottom: 16px;
 }
-
-.footer-nav {
-  list-style: none;
-  display: flex;
-  flex-direction: column;
-  gap: 10px;
-}
+.footer-nav { list-style: none; display: flex; flex-direction: column; gap: 10px; }
 .footer-nav a {
   font-family: var(--oswald);
   font-size: 13px;
   letter-spacing: 0.08em;
   text-transform: uppercase;
-  color: rgba(250,250,247,0.55);
+  color: rgba(250,250,250,0.45);
   text-decoration: none;
   transition: color 0.2s;
 }
 .footer-nav a:hover { color: var(--white); }
-
 .footer-copy {
   font-size: 11px;
-  color: rgba(250,250,247,0.25);
+  color: rgba(250,250,250,0.2);
   margin-top: 40px;
   padding-top: 20px;
-  border-top: 1px solid rgba(250,250,247,0.08);
+  border-top: 1px solid rgba(250,250,250,0.07);
   grid-column: 1 / -1;
   display: flex;
   justify-content: space-between;
-  align-items: center;
 }
-
-/* ── MARQUEE ── */
-.marquee-strip {
-  background: var(--ink);
-  overflow: hidden;
-  padding: 16px 0;
-  border-bottom: 1px solid rgba(250,250,247,0.08);
-}
-.marquee-track {
-  display: flex;
-  gap: 0;
-  width: max-content;
-  animation: marquee 30s linear infinite;
-}
-@keyframes marquee {
-  0% { transform: translateX(0); }
-  100% { transform: translateX(-50%); }
-}
-.marquee-item {
-  font-family: var(--oswald);
-  font-weight: 300;
-  font-size: 11px;
-  letter-spacing: 0.22em;
-  text-transform: uppercase;
-  color: rgba(250,250,247,0.3);
-  padding: 0 48px;
-  flex-shrink: 0;
-  display: flex;
-  align-items: center;
-  gap: 48px;
-  white-space: nowrap;
-}
-.marquee-item .mark {
-  color: var(--teal);
-  font-size: 14px;
-  line-height: 1;
-}
-
-/* ── NEWSLETTER ── */
-.newsletter {
-  background: var(--ink);
-  padding: 64px 48px;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: 48px;
-  flex-wrap: wrap;
-}
-
-.newsletter-text {}
-.newsletter-text .label {
-  font-family: var(--oswald);
-  font-size: 10px;
-  letter-spacing: 0.22em;
-  text-transform: uppercase;
-  color: var(--teal);
-  margin-bottom: 10px;
-}
-.newsletter-text h3 {
-  font-family: var(--oswald);
-  font-weight: 700;
-  font-size: 28px;
-  text-transform: uppercase;
-  color: var(--white);
-}
-
-.newsletter-form {
-  display: flex;
-  gap: 0;
-  max-width: 440px;
-  flex: 1;
-}
-.newsletter-form input {
-  flex: 1;
-  padding: 14px 18px;
-  background: rgba(250,250,247,0.08);
-  border: 1px solid rgba(250,250,247,0.15);
-  border-right: none;
-  color: var(--white);
-  font-family: var(--dm);
-  font-size: 14px;
-  outline: none;
-}
-.newsletter-form input::placeholder { color: rgba(250,250,247,0.3); }
-.newsletter-form input:focus { border-color: var(--teal); }
-.newsletter-form button {
-  font-family: var(--oswald);
-  font-weight: 500;
-  font-size: 12px;
-  letter-spacing: 0.14em;
-  text-transform: uppercase;
-  padding: 14px 24px;
-  background: var(--teal);
-  color: var(--ink);
-  border: none;
-  cursor: pointer;
-  transition: background 0.2s;
-}
-.newsletter-form button:hover { background: #0EC4B0; }
 
 /* ── RESPONSIVE ── */
 @media (max-width: 900px) {
   nav { padding: 0 24px; }
   .nav-links { display: none; }
-  .hero { grid-template-columns: 1fr; }
-  .hero-right { min-height: 50vw; }
-  .hero-left { padding: 48px 24px; }
-  .about-strip { grid-template-columns: 1fr; gap: 40px; padding: 60px 24px; }
-  .workshops-strip { grid-template-columns: 1fr; gap: 40px; padding: 60px 24px; }
-  .exhibitions-grid { grid-template-columns: 1fr; }
-  .exh-card.featured { grid-row: auto; }
-  .news-grid { grid-template-columns: 1fr; }
-  .section { padding: 60px 24px; }
-  footer { grid-template-columns: 1fr; padding: 40px 24px; }
-  .brand-family { padding: 40px 24px; }
-  .newsletter { padding: 48px 24px; flex-direction: column; }
+  .hero-content { padding: 0 24px 48px; grid-template-columns: 1fr; }
+  .hero-right { display: none; }
+  .exh-feature { grid-template-columns: 1fr; }
+  .exh-images { min-height: 60vw; }
+  .exh-info { padding: 48px 24px; border-left: none; border-top: 1px solid var(--rule-heavy); }
+  .about { grid-template-columns: 1fr; }
+  .about-left { padding: 60px 24px; }
+  .about-right { padding: 60px 24px; }
+  .contact { grid-template-columns: 1fr; gap: 40px; padding: 60px 24px; }
+  footer { grid-template-columns: 1fr; padding: 48px 24px; }
 }
 </style>
 </head>
@@ -953,305 +648,135 @@ footer {
     <span class="dot"></span>
   </a>
   <ul class="nav-links">
-    <li><a href="#">Exhibitions</a></li>
-    <li><a href="#">Artists</a></li>
-    <li><a href="#">Publications</a></li>
-    <li><a href="#">Workshops</a></li>
-    <li><a href="#">About</a></li>
-    <li><a href="#" class="nav-cta">Propose an exhibition</a></li>
+    <li><a href="/exhibitions/adaptation/">Exhibitions</a></li>
+    <li><a href="#about">About</a></li>
+    <li><a href="#contact" class="nav-cta">Get in touch</a></li>
   </ul>
 </nav>
 
 <!-- HERO -->
 <section class="hero">
-  <div class="hero-left">
-    <div>
-      <div class="hero-eyebrow">Featured Exhibition</div>
+  <div class="hero-bg"></div>
+  <div class="hero-vignette"></div>
+  <div class="hero-content">
+    <div class="hero-left">
+      <div class="hero-eyebrow">Current Exhibition</div>
+      <div class="hero-artist">Anastasia Samoylova</div>
       <h1 class="hero-title">
-        Infra&shy;<span class="accent">red</span><br>
-        <span class="hollow">Lisbon</span>
+        Adapt<span class="hollow">ation</span>
       </h1>
-      <p class="hero-statement">
-        Jaki Gerulskis's landmark infrared series — the city stripped to its thermal truths, heat and shadow where colour used to be.
+      <a href="/exhibitions/adaptation/" class="hero-cta">View exhibition</a>
+    </div>
+    <div class="hero-right">
+      <span class="hero-tag">Available to Travel</span>
+      <div class="hero-provenance">
+        <div class="hero-provenance-label">Previously shown at</div>
+        <div class="hero-provenance-venue">Saatchi Gallery<br>London</div>
+        <div class="hero-provenance-date">November 2024 – January 2025</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- EXHIBITION FEATURE -->
+<section class="exh-feature">
+  <div class="exh-images">
+    <div class="exh-img tall">
+      <div class="img-fill ph-a1"></div>
+    </div>
+    <div class="exh-img">
+      <div class="img-fill ph-a2"></div>
+    </div>
+    <div class="exh-img">
+      <div class="img-fill ph-a3"></div>
+    </div>
+  </div>
+  <div class="exh-info">
+    <div class="exh-info-top">
+      <div class="exh-label">Exhibition</div>
+      <div class="exh-artist-name">Anastasia Samoylova</div>
+      <h2 class="exh-title">Adaptation</h2>
+      <p class="exh-statement">
+        The first major survey of Samoylova's work — five bodies of photography that map capitalism, climate, and the gendered occupation of public space.
       </p>
-    </div>
-    <div class="hero-meta">
-      <div class="hero-stat">
-        <span class="hero-stat-num">12</span>
-        <span class="hero-stat-label">International Venues · 2024–2026</span>
-      </div>
-      <div class="hero-stat">
-        <span class="hero-stat-num">54</span>
-        <span class="hero-stat-label">Artists Represented Globally</span>
-      </div>
-      <div class="hero-stat">
-        <span class="hero-stat-num">3</span>
-        <span class="hero-stat-label">Continents · Ongoing Programme</span>
+      <div class="exh-series">
+        <span class="series-tag">Floridas</span>
+        <span class="series-tag">FloodZone</span>
+        <span class="series-tag">Landscape Sublime</span>
+        <span class="series-tag">Image Cities</span>
+        <span class="series-tag">Breakfasts</span>
       </div>
     </div>
-  </div>
-  <div class="hero-right">
-    <div class="hero-image-placeholder">
-      <div class="hero-caption">
-        <p class="hero-caption-title">Praça do Comércio, 2023</p>
-        <p class="hero-caption-meta">Jaki Gerulskis · Silver gelatin infrared</p>
+    <div class="exh-info-bottom">
+      <div class="exh-provenance">
+        <div class="provenance-label">Venue history</div>
+        <p class="provenance-text">
+          <em>Adaptation</em> was produced in collaboration with the <strong>Foundation for the Exhibition of Photography</strong> and shown at <strong>Saatchi Gallery, London</strong> from November 2024 to January 2025. The exhibition is now available to travel.
+        </p>
       </div>
+      <a href="/exhibitions/adaptation/" class="exh-link">Full exhibition details</a>
     </div>
   </div>
 </section>
 
-<!-- MARQUEE -->
-<div class="marquee-strip">
-  <div class="marquee-track">
-    <span class="marquee-item">Traveling Exhibitions <span class="mark">·</span> Lisbon <span class="mark">·</span> Berlin <span class="mark">·</span> New York <span class="mark">·</span> Tokyo <span class="mark">·</span> São Paulo</span>
-    <span class="marquee-item">Photography Workshops <span class="mark">·</span> Fine Art Editions <span class="mark">·</span> International Programme <span class="mark">·</span> Independent Non-Profit</span>
-    <span class="marquee-item">Traveling Exhibitions <span class="mark">·</span> Lisbon <span class="mark">·</span> Berlin <span class="mark">·</span> New York <span class="mark">·</span> Tokyo <span class="mark">·</span> São Paulo</span>
-    <span class="marquee-item">Photography Workshops <span class="mark">·</span> Fine Art Editions <span class="mark">·</span> International Programme <span class="mark">·</span> Independent Non-Profit</span>
-  </div>
-</div>
-
-<!-- CURRENT EXHIBITIONS -->
-<section class="section">
-  <div class="section-header">
-    <span class="section-label">Current Exhibitions</span>
-    <a href="#" class="section-link">See all exhibitions</a>
-  </div>
-  <div class="exhibitions-grid">
-    <!-- Featured -->
-    <a href="#" class="exh-card featured">
-      <div class="exh-image">
-        <div class="img-fill ph-1" style="min-height:380px;"></div>
-      </div>
-      <div class="exh-body">
-        <span class="exh-tag tag-traveling">Traveling</span>
-        <h2 class="exh-title">Infrared Lisbon</h2>
-        <p class="exh-artist">Jaki Gerulskis</p>
-        <p style="font-size:13px;color:var(--ink-light);line-height:1.65;margin-bottom:12px;">The city re-imagined through 720nm filtration — Lisbon's limestone buildings, its light, its bodies in motion, translated into the alien register of near-infrared.</p>
-        <div class="exh-venue">Museu do Chiado, Lisbon · Through September 2026</div>
-      </div>
-    </a>
-    <!-- Secondary -->
-    <a href="#" class="exh-card">
-      <div class="exh-image">
-        <div class="img-fill ph-2"></div>
-      </div>
-      <div class="exh-body">
-        <span class="exh-tag tag-current">Current</span>
-        <h2 class="exh-title">Nocturne</h2>
-        <p class="exh-artist">Maria Kapajeva</p>
-        <div class="exh-venue">MNAC, Lisbon · Opens June 2026</div>
-      </div>
-    </a>
-    <a href="#" class="exh-card">
-      <div class="exh-image">
-        <div class="img-fill ph-3"></div>
-      </div>
-      <div class="exh-body">
-        <span class="exh-tag tag-upcoming">Upcoming</span>
-        <h2 class="exh-title">Borderlands</h2>
-        <p class="exh-artist">Rafal Milach</p>
-        <div class="exh-venue">Kulturhuset, Berlin · July 2026</div>
-      </div>
-    </a>
-    <a href="#" class="exh-card">
-      <div class="exh-image">
-        <div class="img-fill ph-4"></div>
-      </div>
-      <div class="exh-body">
-        <span class="exh-tag tag-traveling">Traveling</span>
-        <h2 class="exh-title">The Quiet Ones</h2>
-        <p class="exh-artist">Joanna Piotrowska</p>
-        <div class="exh-venue">Aperture Foundation, NYC · August 2026</div>
-      </div>
-    </a>
-    <a href="#" class="exh-card">
-      <div class="exh-image">
-        <div class="img-fill ph-5"></div>
-      </div>
-      <div class="exh-body">
-        <span class="exh-tag tag-current">Current</span>
-        <h2 class="exh-title">Archive Fever</h2>
-        <p class="exh-artist">Laia Abril</p>
-        <div class="exh-venue">FOAM, Amsterdam · Through August 2026</div>
-      </div>
-    </a>
-  </div>
-</section>
-
-<!-- ABOUT DARK STRIP -->
-<div class="about-strip">
+<!-- ABOUT -->
+<section class="about" id="about">
   <div class="about-left">
-    <div class="about-label">About Us</div>
-    <div class="about-title">
-      Producing<br>
-      <span class="hollow">the work</span><br>
-      that matters
-    </div>
-    <div style="margin-top:32px;border-top:1px solid rgba(250,250,247,0.1);padding-top:32px;">
-      <div class="about-sub-grid">
-        <div class="about-sub-item">
-          <div class="about-sub-num">48<span>+</span></div>
-          <div class="about-sub-label">Countries reached</div>
-        </div>
-        <div class="about-sub-item">
-          <div class="about-sub-num">120<span>+</span></div>
-          <div class="about-sub-label">Exhibitions produced</div>
-        </div>
-        <div class="about-sub-item">
-          <div class="about-sub-num">8</div>
-          <div class="about-sub-label">Years operating</div>
-        </div>
+    <div>
+      <div class="about-label">About</div>
+      <div class="about-title">
+        Victory<br>
+        <span class="hollow">Projects</span>
       </div>
     </div>
   </div>
   <div class="about-right">
-    <p>Victory Projects is an independent, non-profit organisation that produces and circulates <strong>high-calibre photography exhibitions</strong> internationally. We work with artists at every stage — from initial concept through to touring logistics, catalogue production, and venue relationships.</p>
-    <p>Our programme is built around work that demands to travel: bodies of photography with genuine ambition, which deserve audiences beyond the city where they were first shown. We are based in Lisbon and operate across Europe, the Americas, and Asia.</p>
-    <p>We believe the exhibition is itself an art form. The framing, sequencing, and physical encounter with photographs in space is where meaning is made — and that is where we put our energy.</p>
-    <a href="#" style="display:inline-flex;align-items:center;gap:10px;font-family:var(--oswald);font-size:11px;letter-spacing:0.14em;text-transform:uppercase;color:var(--teal);text-decoration:none;margin-top:8px;transition:gap 0.2s;" onmouseover="this.style.gap='16px'" onmouseout="this.style.gap='10px'">Read our full story →</a>
-  </div>
-</div>
-
-<!-- WORKSHOPS / VICTORY SAUCE -->
-<div class="workshops-strip">
-  <div>
-    <div class="workshops-label">Education</div>
-    <div class="workshops-heading">Victory<br><em>Sauce</em><br>Workshops</div>
-    <div class="workshops-by">
-      Photography workshops led by
-      <a href="https://jakigerulskis.com">Jaki Gerulskis</a>
+    <div class="about-text">
+      <p>Victory Projects is an independent organisation that works with institutions internationally to place significant photography exhibitions. We manage the full process — from initial approach through to contracts, logistics, and on-site support.</p>
+      <p>We represent work that deserves to travel: rigorously produced, curatorially ambitious photography that has something to say about the world. <strong>We are based in Lisbon.</strong></p>
+      <p>If you are a museum or gallery programmer looking for your next major photography show, or a photographer with a body of work ready to tour, we would like to hear from you.</p>
     </div>
-    <p style="font-size:13px;color:var(--ink-mid);line-height:1.7;margin-bottom:28px;max-width:280px;">Hands-on, opinionated, small-group. Infrared, street, documentary. Lisbon and beyond.</p>
-    <a href="#" class="workshops-btn">Explore workshops</a>
   </div>
-  <div class="workshops-list">
-    <a href="#" class="workshop-item">
-      <div class="workshop-date">15 Jun 2026</div>
-      <div>
-        <div class="workshop-name">Infrared Intensive</div>
-        <div class="workshop-location">Lisbon · 2 days · 8 participants max</div>
-      </div>
-      <div class="workshop-arrow">→</div>
-    </a>
-    <a href="#" class="workshop-item">
-      <div class="workshop-date">5 Jul 2026</div>
-      <div>
-        <div class="workshop-name">Street & Documentary</div>
-        <div class="workshop-location">Porto · 3 days · 6 participants max</div>
-      </div>
-      <div class="workshop-arrow">→</div>
-    </a>
-    <a href="#" class="workshop-item">
-      <div class="workshop-date">22 Aug 2026</div>
-      <div>
-        <div class="workshop-name">Darkroom Foundations</div>
-        <div class="workshop-location">Lisbon · Weekend · 6 participants max</div>
-      </div>
-      <div class="workshop-arrow">→</div>
-    </a>
-    <a href="#" class="workshop-item">
-      <div class="workshop-date">Oct 2026</div>
-      <div>
-        <div class="workshop-name">Berlin Field Trip</div>
-        <div class="workshop-location">Berlin · 5 days · 8 participants max</div>
-      </div>
-      <div class="workshop-arrow">→</div>
-    </a>
-  </div>
-</div>
+</section>
 
-<!-- NEWS -->
-<section class="section">
-  <div class="section-header">
-    <span class="section-label">News</span>
-    <a href="#" class="section-link">All news</a>
+<!-- CONTACT -->
+<section class="contact" id="contact">
+  <div class="contact-left">
+    <div class="contact-label">Contact</div>
+    <h2 class="contact-heading">Work with<br>institutions<br>worldwide</h2>
+    <p class="contact-sub">We work directly with museum and gallery programmers to place exhibitions. Get in touch to discuss availability, fees, and logistics.</p>
   </div>
-  <div class="news-grid">
-    <a href="#" class="news-card">
-      <div class="news-date">19 May 2026</div>
-      <div class="news-title">Infrared Lisbon Selected for Helsinki Photo Festival 2027</div>
-      <div class="news-excerpt">The touring exhibition will open its Nordic chapter at Helsinki's Kaapelitehdas in Spring 2027, marking the programme's first Scandinavian venue.</div>
-      <span class="news-read">Read more</span>
+  <div class="contact-right">
+    <a href="mailto:hello@victoryprojects.org?subject=Exhibition%20Enquiry" class="contact-btn primary">
+      <span>Exhibition enquiry</span>
+      <span>→</span>
     </a>
-    <a href="#" class="news-card">
-      <div class="news-date">3 May 2026</div>
-      <div class="news-title">Joanna Piotrowska Receives ICP Infinity Award</div>
-      <div class="news-excerpt">Our represented artist Joanna Piotrowska has been awarded the International Center of Photography's Infinity Award for Documentary Practice.</div>
-      <span class="news-read">Read more</span>
-    </a>
-    <a href="#" class="news-card">
-      <div class="news-date">12 Apr 2026</div>
-      <div class="news-title">Open Call: Traveling Exhibition Programme 2027–2028</div>
-      <div class="news-excerpt">We are accepting proposals from photographers and curators for our next cycle of international exhibitions. Deadline: 30 June 2026.</div>
-      <span class="news-read">Read more</span>
+    <a href="mailto:hello@victoryprojects.org?subject=General%20Enquiry" class="contact-btn secondary">
+      <span>General enquiry</span>
+      <span>→</span>
     </a>
   </div>
 </section>
 
-<!-- NEWSLETTER -->
-<div class="newsletter">
-  <div class="newsletter-text">
-    <div class="label">Stay connected</div>
-    <h3>Calls, exhibitions,<br>new editions</h3>
-  </div>
-  <form class="newsletter-form" onsubmit="return false;">
-    <input type="email" placeholder="your@email.com">
-    <button type="submit">Subscribe</button>
-  </form>
-</div>
-
-<!-- BRAND FAMILY -->
-<div class="brand-family">
-  <div class="brand-family-label">Also from Victory Projects</div>
-  <div class="brand-pills">
-    <a href="https://victorysauce.com" target="_blank" class="brand-pill">
-      <span class="pill-dot pink"></span>
-      <div>
-        <div class="pill-name">Victory Sauce</div>
-        <div class="pill-meta">Photography workshops & prints</div>
-      </div>
-    </a>
-    <a href="https://jakigerulskis.com" target="_blank" class="brand-pill">
-      <span class="pill-dot teal"></span>
-      <div>
-        <div class="pill-name">Jaki Gerulskis</div>
-        <div class="pill-meta">Personal work & commissions</div>
-      </div>
-    </a>
-    <a href="#" class="brand-pill">
-      <span class="pill-dot blue"></span>
-      <div>
-        <div class="pill-name">VP Editions</div>
-        <div class="pill-meta">Limited edition publications</div>
-      </div>
-    </a>
-  </div>
-</div>
-
 <!-- FOOTER -->
 <footer>
   <div class="footer-brand">
-    <div class="wordmark">Victory <span>Projects</span></div>
-    <p>An independent non-profit organisation producing and circulating high-calibre photography exhibitions internationally. Based in Lisbon.</p>
+    <div class="wordmark">Victory<span>Projects</span></div>
+    <p>Placing significant photography exhibitions with institutions internationally. Based in Lisbon, Portugal.</p>
   </div>
   <div>
-    <div class="footer-nav-label">Programme</div>
+    <div class="footer-nav-label">Site</div>
     <ul class="footer-nav">
-      <li><a href="#">Exhibitions</a></li>
-      <li><a href="#">Artists</a></li>
-      <li><a href="#">Publications</a></li>
-      <li><a href="#">Workshops</a></li>
-      <li><a href="#">Open Calls</a></li>
+      <li><a href="/exhibitions/adaptation/">Exhibitions</a></li>
+      <li><a href="#about">About</a></li>
+      <li><a href="#contact">Contact</a></li>
     </ul>
   </div>
   <div>
-    <div class="footer-nav-label">Organisation</div>
+    <div class="footer-nav-label">Contact</div>
     <ul class="footer-nav">
-      <li><a href="#">About</a></li>
-      <li><a href="#">Contact</a></li>
-      <li><a href="#">Press</a></li>
-      <li><a href="#">Partners</a></li>
-      <li><a href="#">Support Us</a></li>
+      <li><a href="mailto:hello@victoryprojects.org">hello@victoryprojects.org</a></li>
+      <li><a href="https://www.instagram.com/victoryprojectsorg">Instagram</a></li>
     </ul>
   </div>
   <div class="footer-copy">
