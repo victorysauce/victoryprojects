@@ -184,7 +184,7 @@ nav {
   margin-bottom: 28px;
 }
 .hero-title .hollow {
-  -webkit-text-stroke: 1.5px rgba(250,250,250,0.5);
+  -webkit-text-stroke: 1.5px #FAFAFA;
   color: transparent;
   display: inline;
 }
@@ -751,18 +751,73 @@ footer {
   justify-content: space-between;
 }
 
+.hamburger { display: none; }
+
 /* ── RESPONSIVE ── */
 @media (max-width: 960px) {
-  nav { padding: 0 24px; }
+  /* Nav — hamburger */
+  nav { padding: 0 20px; }
   .nav-links { display: none; }
-  .hero-content { padding: 0 24px 40px; grid-template-columns: 1fr; }
+  .nav-links.open {
+    display: flex;
+    flex-direction: column;
+    position: fixed;
+    top: 64px; left: 0; right: 0;
+    background: var(--white);
+    border-bottom: 1px solid var(--rule-heavy);
+    padding: 24px 20px;
+    gap: 20px;
+    z-index: 199;
+  }
+  .nav-links.open a { font-size: 14px; color: var(--ink); }
+  .hamburger {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+    cursor: pointer;
+    padding: 4px;
+    background: none;
+    border: none;
+  }
+  .hamburger span {
+    display: block;
+    width: 22px;
+    height: 2px;
+    background: var(--ink);
+    transition: all 0.2s;
+  }
+
+  /* Hero — deeper vignette on mobile */
+  .hero-vignette {
+    background:
+      linear-gradient(to top, rgba(13,13,13,0.97) 0%, rgba(13,13,13,0.7) 40%, rgba(13,13,13,0.3) 70%, transparent 100%),
+      linear-gradient(to right, rgba(13,13,13,0.4) 0%, transparent 60%);
+  }
+  .hero-content { padding: 0 20px 36px; grid-template-columns: 1fr; }
   .hero-status { display: none; }
-  .image-strip { grid-template-columns: 1fr 1fr; grid-template-rows: 240px 240px 240px; }
-  .img-cell.span-col { grid-row: auto; }
-  .exh-body { grid-template-columns: 1fr; }
-  .exh-text { padding: 48px 24px; border-right: none; border-bottom: 1px solid var(--rule-heavy); }
-  .exh-sidebar { padding: 48px 24px; position: static; }
-  footer { grid-template-columns: 1fr; padding: 40px 24px; }
+
+  /* Body overflow fix */
+  .exh-body { grid-template-columns: 1fr; overflow: hidden; }
+  .exh-text { padding: 40px 20px; border-right: none; border-bottom: 1px solid var(--rule-heavy); overflow: hidden; }
+  .exh-sidebar { padding: 40px 20px; position: static; overflow: hidden; }
+
+  /* Curator and book boxes */
+  .curator-feature { padding: 24px 20px; margin-top: 36px; }
+  .book-feature { grid-template-columns: 1fr; gap: 24px; padding: 24px 20px; }
+  .book-cover-placeholder { width: 100px; height: 133px; }
+
+  /* Gallery */
+  .gallery-masonry { columns: 2; }
+
+  /* Lightbox — fully in viewport, no scroll needed */
+  .lightbox-prev { left: 8px; }
+  .lightbox-next { right: 8px; }
+  .lightbox-close { top: 16px; right: 16px; font-size: 20px; }
+  .lightbox-img { max-width: 92vw; max-height: 70vh; }
+  .lightbox-inner { max-width: 96vw; }
+  .lightbox-caption { font-size: 11px; padding: 0 8px; }
+
+  footer { grid-template-columns: 1fr; padding: 40px 20px; }
 }
 
 /* ── CURATOR & BOOK FEATURE ── */
@@ -1067,11 +1122,14 @@ document.addEventListener('keydown', function(e) {
     <span class="projects">Projects</span>
     <span class="dot"></span>
   </a>
-  <ul class="nav-links">
+  <ul class="nav-links" id="navLinks">
     <li><a href="/">Home</a></li>
     <li><a href="/#about">About</a></li>
     <li><a href="#enquire" class="nav-cta">Enquire about this exhibition</a></li>
   </ul>
+  <button class="hamburger" id="hamburger" onclick="document.getElementById('navLinks').classList.toggle('open')" aria-label="Menu">
+    <span></span><span></span><span></span>
+  </button>
 </nav>
 
 <!-- HERO -->
