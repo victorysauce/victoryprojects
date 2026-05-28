@@ -3,23 +3,27 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>About — Victory Projects</title>
+<title>Anastasia Samoylova: Adaptation — Victory Projects</title>
 <link rel="icon" type="image/svg+xml" href="/favicon.svg">
-<meta name="description" content="Victory Projects is an independent organisation that develops and circulates lens-based art exhibitions internationally. Based in Lisbon.">
+<meta name="description" content="Adaptation is the first major survey of Anastasia Samoylova's work. Shown at Saatchi Gallery London, now available to travel internationally.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@300;400;500;700&family=Source+Sans+3:ital,wght@0,300;0,400;0,500;1,300;1,400&family=Source+Serif+4:ital,opsz,wght@0,8..60,300;0,8..60,400;1,8..60,300;1,8..60,400&display=swap" rel="stylesheet">
 <style>
 :root {
   --white: #FAFAFA;
   --off-white: #F4F4F4;
+  --paper: #EEEEEE;
   --ink: #0D0D0D;
   --ink-mid: #3a3a3a;
   --ink-light: #888880;
   --rule: rgba(13,13,13,0.10);
   --rule-heavy: rgba(13,13,13,0.18);
   --blue: #1E3FA8;
+  --blue-pale: #E6EAF7;
   --teal: #0EC4B0;
+  --teal-pale: #E2F4F2;
   --pink: #C42D59;
+  --pink-pale: #F7E5EC;
   --oswald: 'Oswald', sans-serif;
   --dm: 'Source Sans 3', sans-serif;
   --serif: 'Source Serif 4', serif;
@@ -27,6 +31,7 @@
 
 * { margin: 0; padding: 0; box-sizing: border-box; }
 html { scroll-behavior: smooth; }
+
 body {
   background: var(--white);
   color: var(--ink);
@@ -96,58 +101,359 @@ nav {
   transition: color 0.2s;
 }
 .nav-links a:hover { color: var(--ink); }
-.nav-links a.active { color: var(--ink); }
 .nav-cta {
   color: var(--blue) !important;
   border: 1px solid var(--blue);
   padding: 7px 16px;
-  transition: all 0.2s !important;
 }
 .nav-cta:hover { background: var(--blue) !important; color: var(--white) !important; }
-.hamburger { display: none; }
 
-/* ── MAIN CONTENT ── */
-.page-wrap {
+/* ── HERO ── */
+.exh-hero {
   margin-top: 64px;
-  max-width: 760px;
-  margin-left: auto;
-  margin-right: auto;
-  padding: 96px 48px 120px;
+  position: relative;
+  height: calc(100vh - 64px);
+  overflow: hidden;
+  background: var(--ink);
+  display: flex;
+  align-items: flex-end;
 }
 
-/* About text */
-.about-intro {
-  margin-bottom: 80px;
-}
-.about-intro p.lead {
-  font-family: var(--serif);
-  font-style: italic;
-  font-size: clamp(20px, 2.2vw, 26px);
-  line-height: 1.6;
-  color: var(--ink-mid);
-  margin-bottom: 28px;
-}
-.about-intro p.sub {
-  font-family: var(--dm);
-  font-size: 15px;
-  line-height: 1.85;
-  color: var(--ink-mid);
-  margin-bottom: 0;
+.hero-bg {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(135deg, #0D0D0D 0%, #1a1a2e 35%, #0EC4B0 100%);
+  opacity: 0.9;
 }
 
-/* Team */
-.team-label {
+/* Subtle animated vignette */
+.hero-vignette {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(to top, rgba(13,13,13,0.85) 0%, rgba(13,13,13,0.1) 50%, transparent 100%);
+  z-index: 1;
+}
+
+.hero-content {
+  position: relative;
+  z-index: 2;
+  padding: 0 64px 64px;
+  width: 100%;
+  display: grid;
+  grid-template-columns: 1fr auto;
+  align-items: flex-end;
+  gap: 48px;
+}
+
+.hero-breadcrumb {
   font-family: var(--oswald);
   font-size: 10px;
   letter-spacing: 0.22em;
   text-transform: uppercase;
-  color: var(--ink-light);
-  margin-bottom: 48px;
+  color: rgba(250,250,250,0.4);
+  margin-bottom: 20px;
   display: flex;
   align-items: center;
   gap: 10px;
 }
-.team-label::before {
+.hero-breadcrumb a {
+  color: rgba(250,250,250,0.4);
+  text-decoration: none;
+  transition: color 0.2s;
+}
+.hero-breadcrumb a:hover { color: rgba(250,250,250,0.8); }
+.hero-breadcrumb span { color: rgba(250,250,250,0.2); }
+
+.hero-artist {
+  font-family: var(--oswald);
+  font-weight: 300;
+  font-size: clamp(14px, 1.5vw, 18px);
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--teal);
+  margin-bottom: 12px;
+}
+
+.hero-title {
+  font-family: var(--oswald);
+  font-weight: 700;
+  font-size: clamp(56px, 8vw, 110px);
+  line-height: 0.88;
+  text-transform: uppercase;
+  letter-spacing: -0.01em;
+  color: var(--white);
+  margin-bottom: 28px;
+}
+.hero-title .hollow {
+  -webkit-text-stroke: 1.5px rgba(250,250,250,0.72);
+  color: transparent;
+  display: inline;
+}
+
+.hero-tags {
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+.hero-tag {
+  font-family: var(--oswald);
+  font-size: 9px;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  padding: 5px 12px;
+  border: 1px solid rgba(250,250,250,0.2);
+  color: rgba(250,250,250,0.55);
+}
+
+.hero-status {
+  text-align: right;
+  flex-shrink: 0;
+}
+.status-badge {
+  display: inline-block;
+  font-family: var(--oswald);
+  font-size: 10px;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  padding: 8px 18px;
+  background: var(--pink);
+  color: var(--white);
+  margin-bottom: 16px;
+}
+.hero-scroll-hint {
+  font-family: var(--oswald);
+  font-size: 9px;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: rgba(250,250,250,0.65);
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  justify-content: flex-end;
+}
+.hero-scroll-hint::before {
+  content: '';
+  display: block;
+  width: 1px;
+  height: 32px;
+  background: rgba(250,250,250,0.5);
+  animation: scrollpulse 2s ease-in-out infinite;
+}
+@keyframes scrollpulse {
+  0%, 100% { opacity: 0.2; }
+  50% { opacity: 0.7; }
+}
+
+/* ── IMAGE STRIP ── */
+.image-strip {
+  display: grid;
+  grid-template-columns: 2fr 1fr 1fr;
+  grid-template-rows: 400px 280px;
+  gap: 3px;
+  background: var(--ink);
+}
+.img-cell {
+  overflow: hidden;
+  position: relative;
+  cursor: zoom-in;
+}
+.img-cell.span-col { grid-row: 1 / 3; }
+.img-fill {
+  width: 100%; height: 100%;
+  object-fit: cover;
+  display: block;
+  transition: transform 0.6s ease;
+}
+.img-cell:hover .img-fill { transform: scale(1.04); }
+.img-caption {
+  position: absolute;
+  bottom: 0; left: 0; right: 0;
+  padding: 10px 14px;
+  background: linear-gradient(to top, rgba(13,13,13,0.7), transparent);
+  font-size: 11px;
+  color: rgba(250,250,250,0.55);
+  font-style: italic;
+  opacity: 0;
+  transition: opacity 0.3s;
+}
+.img-cell:hover .img-caption { opacity: 1; }
+
+/* Placeholder image fills */
+.ph-ir-1 { background: linear-gradient(135deg, #0d0d12 0%, #1a2540 40%, #d4e8e4 100%); }
+.ph-ir-2 { background: linear-gradient(160deg, #0a0f1a 0%, #c8ddd8 100%); }
+.ph-ir-3 { background: linear-gradient(135deg, #050a10 0%, #8ab8b0 100%); }
+.ph-ir-4 { background: linear-gradient(135deg, #0d1520 0%, #b0ccc8 100%); }
+.ph-ir-5 { background: linear-gradient(160deg, #080d14 0%, #a0c0bc 100%); }
+
+/* ── MAIN CONTENT ── */
+.exh-body {
+  display: grid;
+  grid-template-columns: 1fr 340px;
+  gap: 0;
+  border-top: 1px solid var(--rule-heavy);
+}
+
+/* Left: text content */
+.exh-text {
+  padding: 72px 64px 80px;
+  border-right: 1px solid var(--rule-heavy);
+}
+
+.curator-line {
+  font-family: var(--dm);
+  font-size: 13px;
+  font-style: italic;
+  color: var(--ink-light);
+  margin-bottom: 40px;
+  padding-bottom: 40px;
+  border-bottom: 1px solid var(--rule);
+}
+.curator-line a {
+  color: var(--ink-mid);
+  text-decoration: none;
+  border-bottom: 1px solid var(--rule-heavy);
+  transition: border-color 0.2s;
+}
+.curator-line a:hover { border-color: var(--ink); }
+
+.exh-statement {
+  font-family: var(--serif);
+  font-style: italic;
+  font-size: clamp(20px, 2.2vw, 26px);
+  line-height: 1.5;
+  color: var(--ink);
+  margin-bottom: 36px;
+  max-width: 600px;
+}
+
+.exh-prose p {
+  font-size: 15px;
+  line-height: 1.8;
+  color: var(--ink-mid);
+  margin-bottom: 20px;
+  max-width: 600px;
+}
+.exh-prose p strong { color: var(--ink); font-weight: 500; }
+
+.exh-themes {
+  margin-top: 48px;
+  padding-top: 40px;
+  border-top: 1px solid var(--rule);
+}
+.themes-label {
+  font-family: var(--oswald);
+  font-size: 10px;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--ink-light);
+  margin-bottom: 20px;
+}
+.theme-item {
+  padding: 20px 0;
+  border-bottom: 1px solid var(--rule);
+}
+.theme-item:last-child { border-bottom: none; }
+.theme-name {
+  font-family: var(--oswald);
+  font-weight: 500;
+  font-size: 14px;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--ink);
+  margin-bottom: 6px;
+}
+.theme-desc {
+  font-size: 13px;
+  line-height: 1.65;
+  color: var(--ink-light);
+}
+
+/* Right: sidebar */
+.exh-sidebar {
+  padding: 72px 40px 80px;
+  position: sticky;
+  top: 64px;
+  align-self: start;
+}
+
+/* CTA */
+.sidebar-cta {
+  margin-bottom: 48px;
+}
+.cta-heading {
+  font-family: var(--oswald);
+  font-weight: 700;
+  font-size: 18px;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  color: var(--ink);
+  margin-bottom: 8px;
+  line-height: 1.1;
+}
+.cta-sub {
+  font-size: 13px;
+  color: var(--ink-light);
+  margin-bottom: 20px;
+  line-height: 1.6;
+}
+.cta-btn {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  font-family: var(--oswald);
+  font-weight: 500;
+  font-size: 12px;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--white);
+  background: var(--ink);
+  border: none;
+  padding: 16px 20px;
+  cursor: pointer;
+  text-decoration: none;
+  transition: background 0.2s;
+  margin-bottom: 8px;
+}
+.cta-btn:hover { background: var(--blue); }
+.cta-btn-secondary {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  font-family: var(--oswald);
+  font-weight: 400;
+  font-size: 12px;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--ink);
+  background: transparent;
+  border: 1px solid var(--rule-heavy);
+  padding: 14px 20px;
+  cursor: pointer;
+  text-decoration: none;
+  transition: all 0.2s;
+}
+.cta-btn-secondary:hover { border-color: var(--ink); }
+
+/* Venue list */
+.venue-section {
+  margin-top: 48px;
+  padding-top: 36px;
+  border-top: 1px solid var(--rule);
+}
+.venue-label {
+  font-family: var(--oswald);
+  font-size: 10px;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--ink-light);
+  margin-bottom: 24px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+.venue-label::before {
   content: '';
   display: block;
   width: 18px;
@@ -155,48 +461,248 @@ nav {
   background: var(--pink);
 }
 
-.team-member {
-  padding: 48px 0;
-  border-top: 1px solid var(--rule-heavy);
-}
-.team-member:last-child {
-  border-bottom: 1px solid var(--rule-heavy);
+.venue-narrative {
+  font-size: 13px;
+  line-height: 1.75;
+  color: var(--ink-mid);
+  margin-bottom: 28px;
+  font-style: italic;
 }
 
-.member-name {
+.venue-timeline {
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+  position: relative;
+}
+.venue-timeline::before {
+  content: '';
+  position: absolute;
+  left: 5px;
+  top: 8px;
+  bottom: 8px;
+  width: 1px;
+  background: var(--rule-heavy);
+}
+.venue-item {
+  display: grid;
+  grid-template-columns: 20px 1fr;
+  gap: 14px;
+  padding-bottom: 24px;
+  position: relative;
+}
+.venue-item:last-child { padding-bottom: 0; }
+.venue-dot {
+  width: 11px;
+  height: 11px;
+  border-radius: 50%;
+  border: 1.5px solid var(--ink-light);
+  background: var(--white);
+  margin-top: 4px;
+  flex-shrink: 0;
+  position: relative;
+  z-index: 1;
+}
+.venue-dot.active {
+  border-color: var(--blue);
+  background: var(--blue);
+}
+.venue-dot.upcoming {
+  border-color: var(--pink);
+  background: var(--white);
+}
+.venue-name {
   font-family: var(--oswald);
-  font-weight: 700;
-  font-size: 24px;
+  font-weight: 500;
+  font-size: 13px;
   letter-spacing: 0.04em;
   text-transform: uppercase;
   color: var(--ink);
-  margin-bottom: 4px;
+  line-height: 1.2;
+  margin-bottom: 3px;
 }
-.member-role {
-  font-family: var(--oswald);
-  font-weight: 300;
+.venue-city {
   font-size: 12px;
-  letter-spacing: 0.16em;
+  color: var(--ink-light);
+  margin-bottom: 2px;
+}
+.venue-dates {
+  font-family: var(--oswald);
+  font-size: 11px;
+  letter-spacing: 0.08em;
+  color: var(--ink-light);
+}
+.venue-dates.current { color: var(--blue); }
+.venue-dates.upcoming { color: var(--pink); }
+
+/* Specs */
+.specs-section {
+  margin-top: 48px;
+  padding-top: 36px;
+  border-top: 1px solid var(--rule);
+}
+.specs-label {
+  font-family: var(--oswald);
+  font-size: 10px;
+  letter-spacing: 0.2em;
   text-transform: uppercase;
-  color: var(--teal);
-  margin-bottom: 24px;
+  color: var(--ink-light);
+  margin-bottom: 20px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
 }
-.member-bio p {
-  font-size: 15px;
-  line-height: 1.85;
-  color: var(--ink-mid);
-  margin-bottom: 14px;
+.specs-label::before {
+  content: '';
+  display: block;
+  width: 18px;
+  height: 1px;
+  background: var(--teal);
 }
-.member-bio p:last-child { margin-bottom: 0; }
+.spec-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  padding: 10px 0;
+  border-bottom: 1px solid var(--rule);
+  gap: 16px;
+}
+.spec-row:last-child { border-bottom: none; }
+.spec-key {
+  font-family: var(--oswald);
+  font-size: 11px;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--ink-light);
+  flex-shrink: 0;
+}
+.spec-val {
+  font-family: var(--dm);
+  font-size: 13px;
+  color: var(--ink);
+  text-align: right;
+}
+
+/* ── FULL-WIDTH IMAGE BREAK ── */
+.image-break {
+  height: 60vh;
+  overflow: hidden;
+  position: relative;
+}
+.image-break .img-fill { transition: transform 8s ease; }
+.image-break:hover .img-fill { transform: scale(1.04); }
+.image-break-caption {
+  position: absolute;
+  bottom: 24px;
+  right: 32px;
+  font-size: 11px;
+  color: rgba(250,250,250,0.45);
+  font-style: italic;
+}
+
+/* ── RELATED ── */
+.related {
+  padding: 72px 64px 80px;
+  border-top: 1px solid var(--rule-heavy);
+}
+.related-header {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  margin-bottom: 40px;
+  padding-bottom: 16px;
+  border-bottom: 1px solid var(--rule);
+}
+.related-label {
+  font-family: var(--oswald);
+  font-weight: 700;
+  font-size: 13px;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--ink);
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+.related-label::before {
+  content: '';
+  display: block;
+  width: 18px;
+  height: 2px;
+  background: var(--pink);
+}
+.related-link {
+  font-family: var(--oswald);
+  font-size: 11px;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--blue);
+  text-decoration: none;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  transition: gap 0.2s;
+}
+.related-link:hover { gap: 14px; }
+.related-link::after { content: '→'; }
+
+.related-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1px;
+  background: var(--rule-heavy);
+  border: 1px solid var(--rule-heavy);
+}
+.related-card {
+  background: var(--white);
+  text-decoration: none;
+  color: inherit;
+  transition: background 0.2s;
+}
+.related-card:hover { background: var(--off-white); }
+.related-image {
+  aspect-ratio: 4/3;
+  overflow: hidden;
+}
+.related-image .img-fill { transition: transform 0.5s ease; }
+.related-card:hover .related-image .img-fill { transform: scale(1.04); }
+.related-body { padding: 20px 22px 24px; }
+.related-tag {
+  display: inline-block;
+  font-family: var(--oswald);
+  font-size: 9px;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  padding: 4px 10px;
+  margin-bottom: 10px;
+  background: var(--off-white);
+  color: var(--ink-light);
+}
+.related-title {
+  font-family: var(--oswald);
+  font-weight: 700;
+  font-size: 16px;
+  letter-spacing: 0.01em;
+  text-transform: uppercase;
+  line-height: 1.1;
+  color: var(--ink);
+  margin-bottom: 6px;
+}
+.related-artist {
+  font-size: 12px;
+  color: var(--ink-light);
+}
 
 /* ── FOOTER ── */
 footer {
   background: var(--ink);
-  padding: 48px 64px;
+  color: rgba(250,250,250,0.5);
+  padding: 48px;
   display: grid;
   grid-template-columns: 1fr 1fr 1fr;
   gap: 40px;
-  border-top: 2px solid var(--pink);
+  align-items: start;
+  border-top: 3px solid var(--pink);
 }
 .footer-brand .wordmark {
   font-family: var(--oswald);
@@ -242,10 +748,15 @@ footer {
   padding-top: 20px;
   border-top: 1px solid rgba(250,250,250,0.12);
   grid-column: 1 / -1;
+  display: flex;
+  justify-content: space-between;
 }
 
+.hamburger { display: none; }
+
 /* ── RESPONSIVE ── */
-@media (max-width: 900px) {
+@media (max-width: 960px) {
+  /* Nav — hamburger */
   nav { padding: 0 20px; }
   .nav-links { display: none; }
   .nav-links.open {
@@ -269,13 +780,341 @@ footer {
     background: none;
     border: none;
   }
-  .hamburger span { display: block; width: 22px; height: 2px; background: var(--ink); }
-  .page-wrap { padding: 64px 24px 96px; }
-  footer { grid-template-columns: 1fr; padding: 48px 20px; }
+  .hamburger span {
+    display: block;
+    width: 22px;
+    height: 2px;
+    background: var(--ink);
+    transition: all 0.2s;
+  }
+
+  /* Hero — deeper vignette on mobile */
+  .hero-vignette {
+    background:
+      linear-gradient(to top, rgba(13,13,13,0.97) 0%, rgba(13,13,13,0.7) 40%, rgba(13,13,13,0.3) 70%, transparent 100%),
+      linear-gradient(to right, rgba(13,13,13,0.4) 0%, transparent 60%);
+  }
+  .hero-content { padding: 0 20px 36px; grid-template-columns: 1fr; }
+  .hero-status { display: none; }
+
+  /* Body overflow fix */
+  .exh-body { grid-template-columns: 1fr; overflow: hidden; }
+  .exh-text { padding: 40px 20px; border-right: none; border-bottom: 1px solid var(--rule-heavy); overflow: hidden; }
+  .exh-sidebar { padding: 40px 20px; position: static; overflow: hidden; }
+
+  /* Curator and book boxes */
+  .curator-feature { padding: 24px 20px; margin-top: 36px; }
+  .book-feature { grid-template-columns: 1fr; gap: 24px; padding: 24px 20px; }
+  .book-cover-placeholder { width: 100px; height: 133px; }
+
+  /* Gallery */
+  .gallery-masonry { columns: 2; }
+
+  /* Lightbox — fully in viewport, no scroll needed */
+  .lightbox-prev { left: 8px; }
+  .lightbox-next { right: 8px; }
+  .lightbox-close { top: 16px; right: 16px; font-size: 20px; }
+  .lightbox-img { max-width: 92vw; max-height: 70vh; }
+  .lightbox-inner { max-width: 96vw; }
+  .lightbox-caption { font-size: 11px; padding: 0 8px; }
+
+  footer { grid-template-columns: 1fr; padding: 40px 20px; }
+}
+
+/* ── CURATOR & BOOK FEATURE ── */
+.curator-feature {
+  margin-top: 52px;
+  padding: 36px 40px;
+  background: var(--off-white);
+  border-left: 3px solid var(--teal);
+}
+.curator-feature-label {
+  font-family: var(--oswald);
+  font-size: 9px;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: var(--teal);
+  margin-bottom: 8px;
+}
+.curator-feature-name {
+  font-family: var(--oswald);
+  font-weight: 700;
+  font-size: 22px;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  color: var(--ink);
+  margin-bottom: 14px;
+}
+.curator-feature-bio {
+  font-size: 14px;
+  line-height: 1.75;
+  color: var(--ink-mid);
+  margin-bottom: 12px;
+  max-width: 560px;
+}
+.curator-feature-note {
+  font-size: 13px;
+  line-height: 1.65;
+  color: var(--ink-light);
+  font-style: italic;
+  max-width: 560px;
+}
+
+.book-feature {
+  margin-top: 40px;
+  padding: 36px 40px;
+  background: var(--ink);
+  display: grid;
+  grid-template-columns: 1fr auto;
+  gap: 40px;
+  align-items: start;
+}
+.book-feature-label {
+  font-family: var(--oswald);
+  font-size: 9px;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: rgba(250,250,250,0.65);
+  margin-bottom: 8px;
+}
+.book-feature-title {
+  font-family: var(--oswald);
+  font-weight: 700;
+  font-size: 28px;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  color: var(--white);
+  line-height: 1;
+  margin-bottom: 4px;
+}
+.book-feature-publisher {
+  font-family: var(--oswald);
+  font-size: 13px;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: rgba(250,250,250,0.5);
+  margin-bottom: 16px;
+}
+.book-feature-desc {
+  font-size: 13px;
+  line-height: 1.75;
+  color: rgba(250,250,250,0.65);
+  margin-bottom: 20px;
+  max-width: 420px;
+}
+.book-feature-link {
+  font-family: var(--oswald);
+  font-size: 11px;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--teal);
+  text-decoration: none;
+  transition: opacity 0.2s;
+}
+.book-feature-link:hover { opacity: 0.7; }
+.book-cover-placeholder {
+  width: 120px;
+  height: 160px;
+  background: linear-gradient(135deg, #1a2535, #2d4a3e);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  padding: 12px;
+  text-align: center;
+  border: 1px solid rgba(250,250,250,0.1);
+}
+.book-cover-placeholder span {
+  font-family: var(--oswald);
+  font-weight: 700;
+  font-size: 13px;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--white);
+  line-height: 1.2;
+}
+.book-cover-placeholder .book-cover-sub {
+  font-weight: 300;
+  font-size: 10px;
+  color: rgba(250,250,250,0.5);
+  letter-spacing: 0.08em;
+}
+
+/* ── GALLERY & LIGHTBOX ── */
+.gallery-section {
+  padding: 0;
+  background: var(--ink);
+  border-bottom: 1px solid var(--rule-heavy);
+}
+.gallery-masonry {
+  columns: 3;
+  gap: 3px;
+  column-fill: balance;
+}
+.gallery-item {
+  break-inside: avoid;
+  margin-bottom: 3px;
+  position: relative;
+  overflow: hidden;
+  cursor: pointer;
+}
+.gallery-item img {
+  width: 100%;
+  height: auto;
+  display: block;
+  transition: opacity 0.3s, transform 0.4s ease;
+}
+.gallery-item:hover img { opacity: 0.82; transform: scale(1.02); }
+.gallery-item-caption {
+  position: absolute;
+  bottom: 0; left: 0; right: 0;
+  padding: 8px 12px;
+  background: linear-gradient(to top, rgba(13,13,13,0.75), transparent);
+  font-size: 11px;
+  color: rgba(250,250,250,0.8);
+  font-style: italic;
+  opacity: 0;
+  transition: opacity 0.3s;
+}
+.gallery-item:hover .gallery-item-caption { opacity: 1; }
+
+/* Lightbox */
+.lightbox {
+  display: none;
+  position: fixed;
+  inset: 0;
+  background: rgba(13,13,13,0.96);
+  z-index: 1000;
+  align-items: center;
+  justify-content: center;
+}
+.lightbox.open { display: flex; }
+.lightbox-inner {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  max-width: 90vw;
+  max-height: 90vh;
+}
+.lightbox-img {
+  max-width: 88vw;
+  max-height: 80vh;
+  object-fit: contain;
+  display: block;
+}
+.lightbox-caption {
+  font-family: var(--dm);
+  font-size: 13px;
+  color: rgba(250,250,250,0.6);
+  font-style: italic;
+  margin-top: 16px;
+  text-align: center;
+}
+.lightbox-counter {
+  font-family: var(--oswald);
+  font-size: 11px;
+  letter-spacing: 0.14em;
+  color: rgba(250,250,250,0.3);
+  margin-top: 8px;
+}
+.lightbox-close {
+  position: fixed;
+  top: 24px; right: 32px;
+  background: none;
+  border: none;
+  color: rgba(250,250,250,0.6);
+  font-size: 24px;
+  cursor: pointer;
+  transition: color 0.2s;
+  z-index: 1001;
+  line-height: 1;
+}
+.lightbox-close:hover { color: var(--white); }
+.lightbox-prev, .lightbox-next {
+  position: fixed;
+  top: 50%;
+  transform: translateY(-50%);
+  background: none;
+  border: 1px solid rgba(250,250,250,0.2);
+  color: rgba(250,250,250,0.7);
+  font-size: 20px;
+  width: 48px; height: 48px;
+  cursor: pointer;
+  transition: all 0.2s;
+  z-index: 1001;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.lightbox-prev { left: 24px; }
+.lightbox-next { right: 24px; }
+.lightbox-prev:hover, .lightbox-next:hover {
+  background: rgba(250,250,250,0.1);
+  border-color: rgba(250,250,250,0.5);
+  color: var(--white);
+}
+@media (max-width: 900px) {
+  .gallery-masonry { columns: 2; }
+  .lightbox-prev { left: 8px; }
+  .lightbox-next { right: 8px; }
 }
 </style>
 </head>
 <body>
+
+<script>
+const images = [
+  { src: '../../images/Beauty-Salon-Milan-2022.jpg', caption: 'Beauty Salon, Milan (2022)' },
+  { src: '../../images/Flamingo-Reflection-2018.jpg', caption: 'Flamingo Reflection (2018)' },
+  { src: '../../images/Gator-2017.jpg', caption: 'Gator (2017)' },
+  { src: '../../images/Female-Lead-Times-Square-2022.jpg', caption: 'Female Lead, Times Square (2022)' },
+  { src: '../../images/Beached-Boat-2019.jpg', caption: 'Beached Boat (2019)' },
+  { src: '../../images/LA-On-Fire-2020.jpg', caption: 'LA On Fire (2020)' },
+  { src: '../../images/Beaches-2014.jpg', caption: 'Beaches (2014)' },
+  { src: '../../images/Except-Sunday-Panama-City-Beach-Florida-2021.jpg', caption: 'Except Sunday, Panama City Beach (2021)' },
+  { src: '../../images/Breakfas-with-Walker-Evans-1941-2020.jpg', caption: 'Breakfast with Walker Evans 1941 (2020)' },
+  { src: '../../images/Breakfast-with-Stephen-Shore-1977-2018.jpg', caption: 'Breakfast with Stephen Shore 1977 (2018)' },
+  { src: '../../images/Blue-Velvet-Chair-2020.jpg', caption: 'Blue Velvet Chair (2020)' },
+  { src: '../../images/Florida-Furniture-Miami-2019.jpg', caption: 'Florida Furniture, Miami (2019)' },
+  { src: '../../images/Barber-Shop-2018.jpg', caption: 'Barber Shop (2018)' },
+  { src: '../../images/Historic-Theater-Poster-Barcelona-2022.jpg', caption: 'Historic Theater Poster, Barcelona (2022)' },
+  { src: '../../images/Pink-Coat-Moscow-2021.jpg', caption: 'Pink Coat, Moscow (2021)' },
+  { src: '../../images/Advertisment-on-Opera-House-Paris-2021.jpg', caption: 'Advertisement on Opera House, Paris (2021)' },
+  { src: '../../images/Dome-House-with-an-Upside-Down-Flag-2021.jpg', caption: 'Dome House with an Upside-Down Flag (2021)' },
+  { src: '../../images/Construction-in-South-Beach-I-2017.jpg', caption: 'Construction in South Beach I (2017)' },
+  { src: '../../images/Mangroves-2017.jpg', caption: 'Mangroves (2017)' },
+  { src: '../../images/Breakfast-with-William-Eggleston-1976-2017.jpg', caption: 'Breakfast with William Eggleston 1976 (2017)' },
+  { src: '../../images/The-Tea-Room-Vizcaya-2018.jpg', caption: 'The Tea Room, Vizcaya (2018)' }
+];
+let current = 0;
+function openLightbox(idx) {
+  current = idx;
+  updateLightbox();
+  document.getElementById('lightbox').classList.add('open');
+  document.body.style.overflow = 'hidden';
+}
+function closeLightbox() {
+  document.getElementById('lightbox').classList.remove('open');
+  document.body.style.overflow = '';
+}
+function closeLightboxOutside(e) {
+  if (e.target === document.getElementById('lightbox')) closeLightbox();
+}
+function updateLightbox() {
+  document.getElementById('lightboxImg').src = images[current].src;
+  document.getElementById('lightboxCaption').textContent = images[current].caption;
+  document.getElementById('lightboxCounter').textContent = (current + 1) + ' / ' + images.length;
+}
+function nextImage(e) { e.stopPropagation(); current = (current + 1) % images.length; updateLightbox(); }
+function prevImage(e) { e.stopPropagation(); current = (current - 1 + images.length) % images.length; updateLightbox(); }
+document.addEventListener('keydown', function(e) {
+  if (!document.getElementById('lightbox').classList.contains('open')) return;
+  if (e.key === 'ArrowRight') { current = (current + 1) % images.length; updateLightbox(); }
+  if (e.key === 'ArrowLeft') { current = (current - 1 + images.length) % images.length; updateLightbox(); }
+  if (e.key === 'Escape') closeLightbox();
+});
+</script>
 
 <!-- NAV -->
 <nav>
@@ -285,42 +1124,202 @@ footer {
     <span class="dot"></span>
   </a>
   <ul class="nav-links" id="navLinks">
-    <li><a href="/exhibitions/adaptation/">Exhibitions</a></li>
-    <li><a href="/about/" class="active">About</a></li>
-    <li><a href="mailto:hello@victoryprojects.org?subject=General%20Enquiry" class="nav-cta">Get in touch</a></li>
+    <li><a href="/">Home</a></li>
+    <li><a href="/#about">About</a></li>
+    <li><a href="mailto:hello@victoryprojects.org?subject=Exhibition%20Enquiry%20-%20Adaptation" class="nav-cta">Enquire about this exhibition</a></li>
   </ul>
   <button class="hamburger" id="hamburger" onclick="document.getElementById('navLinks').classList.toggle('open')" aria-label="Menu">
     <span></span><span></span><span></span>
   </button>
 </nav>
 
-<!-- MAIN -->
-<div class="page-wrap">
-
-  <div class="about-intro">
-    <p class="lead">Victory Projects is an independent organisation that develops and circulates lens-based art exhibitions internationally.</p>
-    <p class="sub">We're based in Lisbon, Portugal, a city in rapid transformation. As both a growing international tech hub and a nexus for postcolonial dialogue, the city has an unusually rich relationship with questions of culture, capital, and representation. It shapes how we think about the work we circulate.</p>
+<!-- HERO -->
+<section class="exh-hero">
+  <div class="hero-bg" style="background-image:url('../../images/The-Tea-Room-Vizcaya-2018.jpg');background-size:cover;background-position:center;"></div>
+  <div class="hero-vignette"></div>
+  <div class="hero-content">
+    <div>
+      <div class="hero-artist">Anastasia Samoylova</div>
+      <h1 class="hero-title">
+        ADAP<span class="hollow">TATION</span>
+      </h1>
+      <div class="hero-tags">
+        <span class="hero-tag">Survey Exhibition</span>
+        
+        <span class="hero-tag">Climate & Environment</span>
+        <span class="hero-tag">Capitalism & Urban Space</span>
+        <span class="hero-tag">Collage</span>
+      </div>
+    </div>
+    <div class="hero-status">
+      <div class="status-badge">Available to Travel</div>
+      <div class="hero-scroll-hint">Scroll</div>
+    </div>
   </div>
+</section>
 
-  <div class="team-label">Team</div>
+<!-- LIGHTBOX GALLERY -->
+<div class="gallery-section">
+  <div class="gallery-masonry" id="galleryGrid">
+    <div class="gallery-item" onclick="openLightbox(0)"><img src="../../images/Beauty-Salon-Milan-2022.jpg" alt="Beauty Salon, Milan, 2022"><div class="gallery-item-caption">Beauty Salon, Milan (2022)</div></div>
+    <div class="gallery-item" onclick="openLightbox(1)"><img src="../../images/Flamingo-Reflection-2018.jpg" alt="Flamingo Reflection, 2018"><div class="gallery-item-caption">Flamingo Reflection (2018)</div></div>
+    <div class="gallery-item" onclick="openLightbox(2)"><img src="../../images/Gator-2017.jpg" alt="Gator, 2017"><div class="gallery-item-caption">Gator (2017)</div></div>
+    <div class="gallery-item" onclick="openLightbox(3)"><img src="../../images/Female-Lead-Times-Square-2022.jpg" alt="Female Lead, Times Square, 2022"><div class="gallery-item-caption">Female Lead, Times Square (2022)</div></div>
+    <div class="gallery-item" onclick="openLightbox(4)"><img src="../../images/Beached-Boat-2019.jpg" alt="Beached Boat, 2019"><div class="gallery-item-caption">Beached Boat (2019)</div></div>
+    <div class="gallery-item" onclick="openLightbox(5)"><img src="../../images/LA-On-Fire-2020.jpg" alt="LA On Fire, 2020"><div class="gallery-item-caption">LA On Fire (2020)</div></div>
+    <div class="gallery-item" onclick="openLightbox(6)"><img src="../../images/Beaches-2014.jpg" alt="Beaches, 2014"><div class="gallery-item-caption">Beaches (2014)</div></div>
+    <div class="gallery-item" onclick="openLightbox(7)"><img src="../../images/Except-Sunday-Panama-City-Beach-Florida-2021.jpg" alt="Except Sunday, 2021"><div class="gallery-item-caption">Except Sunday, Panama City Beach (2021)</div></div>
+    <div class="gallery-item" onclick="openLightbox(8)"><img src="../../images/Breakfas-with-Walker-Evans-1941-2020.jpg" alt="Breakfast with Walker Evans, 2020"><div class="gallery-item-caption">Breakfast with Walker Evans 1941 (2020)</div></div>
+    <div class="gallery-item" onclick="openLightbox(9)"><img src="../../images/Breakfast-with-Stephen-Shore-1977-2018.jpg" alt="Breakfast with Stephen Shore, 2018"><div class="gallery-item-caption">Breakfast with Stephen Shore 1977 (2018)</div></div>
+    <div class="gallery-item" onclick="openLightbox(10)"><img src="../../images/Blue-Velvet-Chair-2020.jpg" alt="Blue Velvet Chair, 2020"><div class="gallery-item-caption">Blue Velvet Chair (2020)</div></div>
+    <div class="gallery-item" onclick="openLightbox(11)"><img src="../../images/Florida-Furniture-Miami-2019.jpg" alt="Florida Furniture Miami, 2019"><div class="gallery-item-caption">Florida Furniture, Miami (2019)</div></div>
+    <div class="gallery-item" onclick="openLightbox(12)"><img src="../../images/Barber-Shop-2018.jpg" alt="Barber Shop, 2018"><div class="gallery-item-caption">Barber Shop (2018)</div></div>
+    <div class="gallery-item" onclick="openLightbox(13)"><img src="../../images/Historic-Theater-Poster-Barcelona-2022.jpg" alt="Historic Theater Poster, Barcelona, 2022"><div class="gallery-item-caption">Historic Theater Poster, Barcelona (2022)</div></div>
+    <div class="gallery-item" onclick="openLightbox(14)"><img src="../../images/Pink-Coat-Moscow-2021.jpg" alt="Pink Coat, Moscow, 2021"><div class="gallery-item-caption">Pink Coat, Moscow (2021)</div></div>
+    <div class="gallery-item" onclick="openLightbox(15)"><img src="../../images/Advertisment-on-Opera-House-Paris-2021.jpg" alt="Advertisement on Opera House, Paris, 2021"><div class="gallery-item-caption">Advertisement on Opera House, Paris (2021)</div></div>
+    <div class="gallery-item" onclick="openLightbox(16)"><img src="../../images/Dome-House-with-an-Upside-Down-Flag-2021.jpg" alt="Dome House, 2021"><div class="gallery-item-caption">Dome House with an Upside-Down Flag (2021)</div></div>
+    <div class="gallery-item" onclick="openLightbox(17)"><img src="../../images/Construction-in-South-Beach-I-2017.jpg" alt="Construction in South Beach, 2017"><div class="gallery-item-caption">Construction in South Beach I (2017)</div></div>
+    <div class="gallery-item" onclick="openLightbox(18)"><img src="../../images/Mangroves-2017.jpg" alt="Mangroves, 2017"><div class="gallery-item-caption">Mangroves (2017)</div></div>
+    <div class="gallery-item" onclick="openLightbox(19)"><img src="../../images/Breakfast-with-William-Eggleston-1976-2017.jpg" alt="Breakfast with William Eggleston, 2017"><div class="gallery-item-caption">Breakfast with William Eggleston 1976 (2017)</div></div>
+    <div class="gallery-item" onclick="openLightbox(20)"><img src="../../images/The-Tea-Room-Vizcaya-2018.jpg" alt="The Tea Room, Vizcaya, 2018"><div class="gallery-item-caption">The Tea Room, Vizcaya (2018)</div></div>
+  </div>
+</div>
 
-  <div class="team-member">
-    <div class="member-name">Anne James</div>
-    <div class="member-role">Executive Director & Founding Curator</div>
-    <div class="member-bio">
-      <p>Anne James serves on the board of PhotoIreland, one of Europe's most significant photography organisations. In 2025 PhotoIreland opened the International Centre for the Image in Dublin, consolidating over a decade of work promoting lens-based arts and publishing as a founding member of the EU's Futures and Parallel photography platforms.</p>
-      <p>James holds an MA in Art and Research Collaboration from Dún Laoghaire Institute of Art, Design and Technology, an MSc in History of Material Culture from the University of Edinburgh, and a BA in Cultural Anthropology from Boston University.</p>
+<!-- LIGHTBOX OVERLAY -->
+<div class="lightbox" id="lightbox" onclick="closeLightboxOutside(event)">
+  <button class="lightbox-close" onclick="closeLightbox()">&#x2715;</button>
+  <button class="lightbox-prev" onclick="prevImage(event)">&#x2190;</button>
+  <button class="lightbox-next" onclick="nextImage(event)">&#x2192;</button>
+  <div class="lightbox-inner">
+    <img class="lightbox-img" id="lightboxImg" src="" alt="">
+    <div class="lightbox-caption" id="lightboxCaption"></div>
+    <div class="lightbox-counter" id="lightboxCounter"></div>
+  </div>
+</div>
+
+<!-- BODY: TEXT + SIDEBAR -->
+<div class="exh-body">
+
+  <!-- LEFT: TEXT -->
+  <div class="exh-text">
+    <p class="exh-statement">
+      A modern-day flâneuse with a camera in hand, Anastasia Samoylova observes the everyday to reveal its absurdities and its quietly accumulating violence.
+    </p>
+
+    <div class="exh-prose">
+      <p>Anastasia Samoylova is one of the most distinctive voices in contemporary American photography. <em>Adaptation</em> is the first major survey of her work, presenting five of her most significant series: <em>Floridas</em>, <em>FloodZone</em>, <em>Landscape Sublime</em>, <em>Image Cities</em>, and <em>Breakfasts</em>.</p>
+      <p>As a first-generation immigrant to the United States, Samoylova sees both the surface America presents and what lies beneath it. Wandering through urban and 'natural' landscapes, her meticulously layered images invite the viewer to decode and interpret the word "adaptation" across themes such as capitalism, climate change, gentrification, and the gendered occupation of public space.</p>
+      <p>Intertwining aesthetics with socio-politics, her work responds to our rapidly changing world with curiosity, humor, and pointed critique.</p>
+      <p>In its first showing at Saatchi Gallery, London, the exhibition drew more than 40,000 visitors. It is now available to travel.</p>
+    </div>
+
+    <div class="exh-themes">
+      <div class="themes-label">Key Themes</div>
+      <div class="theme-item">
+        <div class="theme-name">Climate & Environment</div>
+        <div class="theme-desc"><em>FloodZone</em> documents the American South where resort architectures and manicured coastlines, built in defiance of nature, are slowly being reclaimed by it. The kaleidoscopic collages of <em>Landscape Sublime</em> challenge our habit of treating landscape as something that exists to be looked at, consumed, or framed.</div>
+      </div>
+      <div class="theme-item">
+        <div class="theme-name">Capitalism & Urban Space</div>
+        <div class="theme-desc">With <em>Floridas</em>, Samoylova renders Florida as a microcosm of the United States — a layered socio-political landscape of nostalgia, economic decay, and widening inequality. <em>Image Cities</em> continues this exploration across the capitals of Europe and Asia, tracking the ways visual capitalism and the gendered gaze shape how we see and move through cities.</div>
+      </div>
+      <div class="theme-item">
+        <div class="theme-name">The Photographic Canon</div>
+        <div class="theme-desc">The <em>Breakfasts</em> series stages playful, witty, tongue-in-cheek conversations with the history of photography, its canonical images reduced to props on a breakfast table. In the age of the "lifestyle influencer," Samoylova's careful, humorous appropriations ask who gets to be taken seriously, and why.</div>
+      </div>
+    </div>
+
+    <!-- CURATOR FEATURE -->
+    <div class="curator-feature">
+      <div class="curator-feature-label">Curator</div>
+      <div class="curator-feature-name">Taous Dahmani</div>
+      <p class="curator-feature-bio">Taous Dahmani is a London-based art historian specialising in photography. Since September 2025, she is Curator at the Photographers' Gallery, London. Her curatorial projects include the 2022 Louis Roederer Discovery Award at Les Rencontres d'Arles, the 2024 Jaou Photo Biennale in Tunis, and solo exhibitions at NOUA (Norway), Saatchi Gallery (London), and Kyotographie (Japan). She is associate editor of <em>Shining Lights: Black Women Photographers in 1980s–90s Britain</em> (MACK/Autograph ABP, 2024), and has published with Phaidon, Tate, Pompidou, Aperture, and FOAM.</p>
+      <p class="curator-feature-note">New institutions may commission their own curatorial text. Dahmani is available for catalogue contributions and public programming.</p>
+    </div>
+
+    <!-- BOOK FEATURE -->
+    <div class="book-feature">
+      <div class="book-feature-text">
+        <div class="book-feature-label">Publication</div>
+        <div class="book-feature-title">Adaptation</div>
+        <div class="book-feature-publisher">Thames &amp; Hudson, 2024</div>
+        <p class="book-feature-desc">This first career survey on Anastasia Samoylova features 195 images from across her six major bodies of work. Available in the exhibition and through Thames &amp; Hudson internationally.</p>
+        <a href="https://www.thamesandhudson.com/products/anastasia-samoylova-adaptation" target="_blank" class="book-feature-link">Publisher's page →</a>
+      </div>
+      <div class="book-feature-cover">
+        <img src="../../images/Anastasia-Samoylova-Adaptation.webp" alt="Adaptation — Anastasia Samoylova, Thames & Hudson" style="width:140px;height:auto;display:block;border:1px solid rgba(250,250,250,0.1);">
+      </div>
     </div>
   </div>
 
-  <div class="team-member">
-    <div class="member-name">Jaki Gerulskis</div>
-    <div class="member-role">Founding Producer</div>
-    <div class="member-bio">
-      <p>Jaki Gerulskis is Co-Founder of the Lisbon Street Photo Fest, an international photography festival held annually in the Portuguese capital with partners including Fujifilm and the Faculty of Fine Arts at the University of Lisbon. He also co-founded the Lisboa Photo Community (LxPC), an active photography and social community with over 1,000 members. Before founding Victory Projects, he spent a decade producing events and exhibitions at fine arts venues in New England.</p>
-    </div>
-  </div>
+  <!-- RIGHT: SIDEBAR -->
+  <div class="exh-sidebar">
 
+    <!-- CTA -->
+    <div class="sidebar-cta" id="enquire">
+      <div class="cta-heading">Bring this exhibition to your institution</div>
+      <a href="mailto:hello@victoryprojects.org?subject=Exhibition%20Enquiry%20-%20Adaptation" class="cta-btn">
+        <span>Make an enquiry</span>
+        <span>→</span>
+      </a>
+    </div>
+
+    <!-- VENUE LIST -->
+    <div class="venue-section">
+      <div class="venue-label">Venue List</div>
+      <p class="venue-narrative">
+        Adaptation was produced in collaboration with the Foundation for the Exhibition of Photography and shown at Saatchi Gallery, London from November 2024 to January 2025. The exhibition is now available to travel.
+      </p>
+      <div class="venue-timeline">
+        <div class="venue-item">
+          <div class="venue-dot active"></div>
+          <div>
+            <div class="venue-name">Saatchi Gallery</div>
+            <div class="venue-city">London, United Kingdom</div>
+            <div class="venue-dates current">November 2024 – January 2025 · Premiere</div>
+          </div>
+        </div>
+        <div class="venue-item">
+          <div class="venue-dot upcoming"></div>
+          <div>
+            <div class="venue-name">Available to Travel</div>
+            <div class="venue-city">Touring internationally</div>
+            <div class="venue-dates upcoming">Enquire for availability</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- SPECS -->
+    <div class="specs-section">
+      <div class="specs-label">Exhibition Specifications</div>
+      <div class="spec-row">
+        <span class="spec-key">Works</span>
+        <span class="spec-val">100+ works</span>
+      </div>
+      <div class="spec-row">
+        <span class="spec-key">Scope</span>
+        <span class="spec-val">2015 to present</span>
+      </div>
+      <div class="spec-row">
+        <span class="spec-key">Format</span>
+        <span class="spec-val">Framed archival prints, unframed prints, video</span>
+      </div>
+      <div class="spec-row">
+        <span class="spec-key">Venue type</span>
+        <span class="spec-val">Indoor · Climate controlled</span>
+      </div>
+      <div class="spec-row">
+        <span class="spec-key">Catalogue</span>
+        <span class="spec-val">Thames & Hudson, 2024</span>
+      </div>
+      <div class="spec-row">
+        <span class="spec-key">Curator</span>
+        <span class="spec-val">Taous Dahmani · negotiable</span>
+      </div>
+    </div>
+
+  </div>
 </div>
 
 <!-- FOOTER -->
@@ -333,7 +1332,7 @@ footer {
     <div class="footer-nav-label">Site</div>
     <ul class="footer-nav">
       <li><a href="/exhibitions/adaptation/">Exhibitions</a></li>
-      <li><a href="/about/">About</a></li>
+      <li><a href="/#about">About</a></li>
     </ul>
   </div>
   <div>
