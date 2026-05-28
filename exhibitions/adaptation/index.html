@@ -947,6 +947,13 @@ footer {
   background: var(--ink);
   border-bottom: 1px solid var(--rule-heavy);
 }
+.gallery-top-row {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 3px;
+  margin-bottom: 3px;
+  background: var(--ink);
+}
 .gallery-masonry {
   columns: 3;
   gap: 3px;
@@ -1085,7 +1092,7 @@ const images = [
   { src: '../../images/Construction-in-South-Beach-I-2017.jpg', caption: 'Construction in South Beach I (2017)' },
   { src: '../../images/Mangroves-2017.jpg', caption: 'Mangroves (2017)' },
   { src: '../../images/Breakfast-with-William-Eggleston-1976-2017.jpg', caption: 'Breakfast with William Eggleston 1976 (2017)' },
-  { src: '../../images/The-Tea-Room-Vizcaya-2018.jpg', caption: 'The Tea Room, Vizcaya (2018)' }
+  { src: '../../images/The-Tea-Room-Vizcaya-2018.jpg', caption: 'The Tea Room, Vizcaya (2018)' },
 ];
 let current = 0;
 function openLightbox(idx) {
@@ -1177,7 +1184,7 @@ document.addEventListener('keydown', function(e) {
     <div class="gallery-item" onclick="openLightbox(13)"><img src="../../images/Historic-Theater-Poster-Barcelona-2022.jpg" alt="Historic Theater Poster, Barcelona, 2022"><div class="gallery-item-caption">Historic Theater Poster, Barcelona (2022)</div></div>
     <div class="gallery-item" onclick="openLightbox(14)"><img src="../../images/Pink-Coat-Moscow-2021.jpg" alt="Pink Coat, Moscow, 2021"><div class="gallery-item-caption">Pink Coat, Moscow (2021)</div></div>
     <div class="gallery-item" onclick="openLightbox(15)"><img src="../../images/Advertisment-on-Opera-House-Paris-2021.jpg" alt="Advertisement on Opera House, Paris, 2021"><div class="gallery-item-caption">Advertisement on Opera House, Paris (2021)</div></div>
-    <div class="gallery-item" onclick="openLightbox(16)"><img src="../../images/Dome-House-with-an-Upside-Down-Flag-2021.jpg" alt="Dome House, 2021"><div class="gallery-item-caption">Dome House with an Upside-Down Flag (2021)</div></div>
+    <div class="gallery-item" onclick="openLightbox(16)"><img src="../../images/Dome-House-with-an-Upside-Down-Flag-2021.jpg" alt="Dome House with an Upside-Down Flag, 2021"><div class="gallery-item-caption">Dome House with an Upside-Down Flag (2021)</div></div>
     <div class="gallery-item" onclick="openLightbox(17)"><img src="../../images/Construction-in-South-Beach-I-2017.jpg" alt="Construction in South Beach, 2017"><div class="gallery-item-caption">Construction in South Beach I (2017)</div></div>
     <div class="gallery-item" onclick="openLightbox(18)"><img src="../../images/Mangroves-2017.jpg" alt="Mangroves, 2017"><div class="gallery-item-caption">Mangroves (2017)</div></div>
     <div class="gallery-item" onclick="openLightbox(19)"><img src="../../images/Breakfast-with-William-Eggleston-1976-2017.jpg" alt="Breakfast with William Eggleston, 2017"><div class="gallery-item-caption">Breakfast with William Eggleston 1976 (2017)</div></div>
