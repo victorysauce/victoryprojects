@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Victory Projects — International Photography Exhibitions</title>
 <link rel="icon" type="image/svg+xml" href="/favicon.svg">
-<meta name="description" content="Victory Projects develops and circulates significant lens-based art exhibitions to institutions internationally. Based in Lisbon.">
+<meta name="description" content="Victory Projects produces and circulates high-calibre photography exhibitions internationally. Based in Lisbon.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@300;400;500;700&family=Source+Sans+3:ital,wght@0,300;0,400;0,500;1,300;1,400&family=Source+Serif+4:ital,opsz,wght@0,8..60,300;0,8..60,400;1,8..60,300;1,8..60,400&display=swap" rel="stylesheet">
 <style>
@@ -115,96 +115,87 @@ nav {
 /* ── HERO ── */
 .hero {
   margin-top: 64px;
-  min-height: calc(100vh - 64px);
+  height: calc(100vh - 64px);
+  position: relative;
+  overflow: hidden;
   background: var(--ink);
   display: flex;
   align-items: flex-end;
-  position: relative;
-  overflow: hidden;
-  padding: 0 64px 80px;
 }
 
-/* Subtle grid texture */
-.hero::before {
-  content: '';
+.hero-bg {
   position: absolute;
   inset: 0;
-  background-image:
-    linear-gradient(rgba(250,250,250,0.025) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(250,250,250,0.025) 1px, transparent 1px);
-  background-size: 72px 72px;
-  pointer-events: none;
+  background-image: url('images/Gator-2017.jpg');
+  background-size: cover;
+  background-position: center;
 }
 
-/* Large VP watermark — decorative only */
-.hero-watermark {
+.hero-vignette {
   position: absolute;
-  top: 50%;
-  right: -3%;
-  transform: translateY(-50%);
-  font-family: var(--oswald);
-  font-weight: 700;
-  font-size: clamp(280px, 40vw, 560px);
-  letter-spacing: -0.04em;
-  text-transform: uppercase;
-  color: transparent;
-  -webkit-text-stroke: 1px rgba(250,250,250,0.035);
-  user-select: none;
-  pointer-events: none;
-  line-height: 1;
+  inset: 0;
+  background:
+    linear-gradient(to top, rgba(13,13,13,0.92) 0%, rgba(13,13,13,0.3) 45%, transparent 100%),
+    linear-gradient(to right, rgba(13,13,13,0.5) 0%, transparent 60%);
+  z-index: 1;
 }
 
-.hero-inner {
+.hero-content {
   position: relative;
   z-index: 2;
+  padding: 0 64px 72px;
   width: 100%;
   display: grid;
-  grid-template-columns: 1fr auto;
+  grid-template-columns: 1fr 1fr;
   align-items: flex-end;
-  gap: 64px;
+  gap: 48px;
 }
+
+.hero-left {}
 
 .hero-eyebrow {
   font-family: var(--oswald);
   font-size: 10px;
-  letter-spacing: 0.26em;
+  letter-spacing: 0.24em;
   text-transform: uppercase;
   color: var(--teal);
-  margin-bottom: 24px;
+  margin-bottom: 18px;
   display: flex;
   align-items: center;
-  gap: 12px;
+  gap: 10px;
 }
 .hero-eyebrow::before {
   content: '';
   display: block;
-  width: 28px;
+  width: 24px;
   height: 1px;
   background: var(--teal);
+}
+
+.hero-artist {
+  font-family: var(--oswald);
+  font-weight: 300;
+  font-size: clamp(13px, 1.4vw, 17px);
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: rgba(250,250,250,0.6);
+  margin-bottom: 10px;
 }
 
 .hero-title {
   font-family: var(--oswald);
   font-weight: 700;
-  font-size: clamp(64px, 10vw, 130px);
+  font-size: clamp(60px, 9vw, 120px);
   line-height: 0.87;
   text-transform: uppercase;
   letter-spacing: -0.01em;
   color: var(--white);
-  margin-bottom: 44px;
+  margin-bottom: 36px;
 }
-.hero-title .line { display: block; }
 .hero-title .hollow {
-  -webkit-text-stroke: 1.5px rgba(250,250,250,0.62);
+  -webkit-text-stroke: 1.5px rgba(250,250,250,0.72);
   color: transparent;
-}
-
-.hero-sub {
-  font-size: 15px;
-  line-height: 1.8;
-  color: rgba(250,250,250,0.55);
-  max-width: 440px;
-  margin-bottom: 44px;
+  display: inline;
 }
 
 .hero-cta {
@@ -214,11 +205,11 @@ nav {
   font-family: var(--oswald);
   font-weight: 500;
   font-size: 12px;
-  letter-spacing: 0.18em;
+  letter-spacing: 0.16em;
   text-transform: uppercase;
   color: var(--white);
   text-decoration: none;
-  border-bottom: 1px solid rgba(250,250,250,0.28);
+  border-bottom: 1px solid rgba(250,250,250,0.3);
   padding-bottom: 6px;
   transition: all 0.25s;
 }
@@ -229,173 +220,278 @@ nav {
 }
 .hero-cta::after { content: '→'; }
 
-.hero-meta {
+.hero-right {
   display: flex;
   flex-direction: column;
   align-items: flex-end;
-  gap: 28px;
-  padding-bottom: 4px;
-}
-.hero-meta-item {
-  text-align: right;
-  border-right: 2px solid rgba(250,250,250,0.1);
-  padding-right: 18px;
-}
-.hero-meta-label {
-  font-family: var(--oswald);
-  font-size: 9px;
-  letter-spacing: 0.22em;
-  text-transform: uppercase;
-  color: rgba(250,250,250,0.3);
-  margin-bottom: 5px;
-}
-.hero-meta-value {
-  font-family: var(--oswald);
-  font-size: 13px;
-  font-weight: 400;
-  letter-spacing: 0.06em;
-  text-transform: uppercase;
-  color: rgba(250,250,250,0.65);
-  line-height: 1.3;
+  gap: 24px;
 }
 
-/* ── THE MODEL ── */
-.model {
-  background: var(--white);
-  padding: 96px 64px;
+.hero-tag {
+  display: inline-block;
+  font-family: var(--oswald);
+  font-size: 9px;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  padding: 7px 16px;
+  background: var(--teal);
+  color: var(--ink);
+}
+
+.hero-provenance {
+  text-align: right;
+  border-right: 2px solid rgba(250,250,250,0.15);
+  padding-right: 20px;
+}
+.hero-provenance-label {
+  font-family: var(--oswald);
+  font-size: 9px;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: rgba(250,250,250,0.6);
+  margin-bottom: 8px;
+}
+.hero-provenance-venue {
+  font-family: var(--oswald);
+  font-weight: 500;
+  font-size: 14px;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: rgba(250,250,250,0.95);
+  line-height: 1.3;
+}
+.hero-provenance-date {
+  font-size: 12px;
+  color: rgba(250,250,250,0.65);
+  margin-top: 4px;
+}
+
+/* ── EXHIBITION FEATURE ── */
+.exh-feature {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  min-height: 70vh;
   border-bottom: 1px solid var(--rule-heavy);
 }
 
-.section-label {
+.exh-images {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-template-rows: 1fr 1fr;
+  gap: 3px;
+  background: var(--ink);
+  overflow: hidden;
+}
+
+.exh-img {
+  overflow: hidden;
+  position: relative;
+}
+.exh-img.tall { grid-row: 1 / 3; }
+
+.img-fill {
+  width: 100%; height: 100%;
+  object-fit: cover;
+  display: block;
+  transition: transform 0.6s ease;
+}
+.exh-img:hover .img-fill { transform: scale(1.04); }
+
+.ph-a1 { background: linear-gradient(135deg, #1a2e1a 0%, #4a7a5a 50%, #8ab870 100%); }
+.ph-a2 { background: linear-gradient(160deg, #2a1a0a 0%, #c87a3a 70%, #e8c060 100%); }
+.ph-a3 { background: linear-gradient(135deg, #0a1a2e 0%, #1a4a6a 60%, #40a0c0 100%); }
+.ph-a4 { background: linear-gradient(160deg, #2e0a1a 0%, #8a2a4a 60%, #c06080 100%); }
+
+.exh-info {
+  padding: 64px 56px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  border-left: 1px solid var(--rule-heavy);
+}
+
+.exh-info-top {}
+
+.exh-label {
   font-family: var(--oswald);
   font-size: 10px;
-  letter-spacing: 0.24em;
+  letter-spacing: 0.22em;
   text-transform: uppercase;
   color: var(--ink-light);
-  margin-bottom: 52px;
+  margin-bottom: 24px;
   display: flex;
   align-items: center;
   gap: 10px;
 }
-.section-label::before {
+.exh-label::before {
   content: '';
   display: block;
-  width: 20px;
+  width: 18px;
   height: 1px;
-  background: var(--ink-light);
-}
-.section-label.teal-rule::before { background: var(--teal); }
-.section-label.pink-rule::before { background: var(--pink); }
-
-.model-grid {
-  display: grid;
-  grid-template-columns: 1fr 1fr 1fr;
-  gap: 0;
-  border-top: 1px solid var(--rule-heavy);
+  background: var(--pink);
 }
 
-.model-col {
-  padding: 48px 48px 48px 0;
-  border-right: 1px solid var(--rule);
-  display: flex;
-  flex-direction: column;
-}
-.model-col:first-child { padding-left: 0; }
-.model-col:last-child { border-right: none; padding-right: 0; padding-left: 48px; }
-.model-col:nth-child(2) { padding-left: 48px; }
-
-.model-number {
+.exh-artist-name {
   font-family: var(--oswald);
-  font-size: 10px;
-  letter-spacing: 0.22em;
-  color: var(--teal);
-  margin-bottom: 20px;
-}
-
-.model-heading {
-  font-family: var(--oswald);
-  font-weight: 700;
-  font-size: 32px;
-  text-transform: uppercase;
-  letter-spacing: 0.01em;
-  color: var(--ink);
-  margin-bottom: 16px;
-  line-height: 1;
-}
-
-.model-text {
+  font-weight: 300;
   font-size: 14px;
-  line-height: 1.85;
-  color: var(--ink-mid);
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--ink-light);
+  margin-bottom: 8px;
 }
 
-/* ── FORTHCOMING ── */
-.forthcoming {
-  background: var(--off-white);
-  padding: 96px 64px;
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 80px;
-  align-items: center;
-  border-bottom: 1px solid var(--rule-heavy);
-}
-
-.forthcoming-title {
+.exh-title {
   font-family: var(--oswald);
   font-weight: 700;
-  font-size: clamp(44px, 6vw, 80px);
-  line-height: 0.88;
+  font-size: clamp(32px, 4vw, 52px);
+  line-height: 0.9;
   text-transform: uppercase;
+  letter-spacing: -0.01em;
   color: var(--ink);
-}
-.forthcoming-title .hollow {
-  -webkit-text-stroke: 1.5px rgba(13,13,13,0.28);
-  color: transparent;
-  display: block;
+  margin-bottom: 28px;
 }
 
-.forthcoming-right {
-  display: flex;
-  flex-direction: column;
-  gap: 24px;
-}
-
-.forthcoming-text {
+.exh-statement {
   font-family: var(--serif);
   font-style: italic;
-  font-size: 17px;
-  line-height: 1.75;
+  font-size: 18px;
+  line-height: 1.6;
   color: var(--ink-mid);
-  max-width: 460px;
+  margin-bottom: 28px;
+  max-width: 420px;
 }
 
-.forthcoming-cta {
+.exh-series {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  margin-bottom: 32px;
+}
+.series-tag {
+  font-family: var(--oswald);
+  font-size: 9px;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  padding: 5px 12px;
+  background: var(--off-white);
+  color: var(--ink-light);
+  border: 1px solid var(--rule-heavy);
+}
+
+.exh-info-bottom {}
+
+.exh-provenance {
+  padding: 24px 0;
+  border-top: 1px solid var(--rule);
+  border-bottom: 1px solid var(--rule);
+  margin-bottom: 28px;
+}
+.provenance-label {
+  font-family: var(--oswald);
+  font-size: 9px;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--ink-light);
+  margin-bottom: 8px;
+}
+.provenance-text {
+  font-size: 13px;
+  line-height: 1.65;
+  color: var(--ink-mid);
+  font-style: italic;
+}
+.provenance-text strong { color: var(--ink); font-style: normal; font-weight: 500; }
+
+.exh-link {
   display: inline-flex;
   align-items: center;
   gap: 12px;
   font-family: var(--oswald);
   font-weight: 500;
-  font-size: 11px;
-  letter-spacing: 0.18em;
+  font-size: 12px;
+  letter-spacing: 0.16em;
   text-transform: uppercase;
   color: var(--ink);
   text-decoration: none;
-  border-bottom: 1px solid rgba(13,13,13,0.22);
+  border-bottom: 1px solid var(--rule-heavy);
   padding-bottom: 6px;
-  align-self: flex-start;
   transition: all 0.25s;
 }
-.forthcoming-cta:hover {
+.exh-link:hover {
   gap: 18px;
-  border-color: var(--blue);
   color: var(--blue);
+  border-color: var(--blue);
 }
-.forthcoming-cta::after { content: '→'; }
+.exh-link::after { content: '→'; }
+
+/* ── ABOUT ── */
+.about {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+}
+
+.about-left {
+  background: var(--ink);
+  padding: 80px 64px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.about-label {
+  font-family: var(--oswald);
+  font-size: 10px;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: var(--teal);
+  margin-bottom: 24px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+.about-label::before {
+  content: '';
+  display: block;
+  width: 24px;
+  height: 1px;
+  background: var(--teal);
+}
+
+.about-title {
+  font-family: var(--oswald);
+  font-weight: 700;
+  font-size: clamp(40px, 5vw, 72px);
+  line-height: 0.88;
+  text-transform: uppercase;
+  color: var(--white);
+}
+.about-title .hollow {
+  -webkit-text-stroke: 1.5px rgba(250,250,250,0.55);
+  color: transparent;
+  display: block;
+}
+
+.about-right {
+  padding: 80px 64px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.about-text p {
+  font-size: 15px;
+  line-height: 1.8;
+  color: var(--ink-mid);
+  margin-bottom: 20px;
+  max-width: 480px;
+}
+.about-text p strong { color: var(--ink); font-weight: 500; }
 
 /* ── CONTACT ── */
 .contact {
   background: var(--white);
-  padding: 96px 64px;
+  padding: 80px 64px;
   display: grid;
   grid-template-columns: 1fr 1fr;
   gap: 80px;
@@ -403,11 +499,31 @@ nav {
   border-bottom: 1px solid var(--rule-heavy);
 }
 
+.contact-left {}
+.contact-label {
+  font-family: var(--oswald);
+  font-size: 10px;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: var(--ink-light);
+  margin-bottom: 20px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+.contact-label::before {
+  content: '';
+  display: block;
+  width: 18px;
+  height: 1px;
+  background: var(--pink);
+}
+
 .contact-heading {
   font-family: var(--oswald);
   font-weight: 700;
-  font-size: clamp(36px, 4.5vw, 60px);
-  line-height: 0.9;
+  font-size: clamp(28px, 3.5vw, 48px);
+  line-height: 0.92;
   text-transform: uppercase;
   color: var(--ink);
   margin-bottom: 24px;
@@ -417,13 +533,13 @@ nav {
   font-size: 15px;
   line-height: 1.75;
   color: var(--ink-mid);
-  max-width: 380px;
+  max-width: 400px;
 }
 
 .contact-right {
   display: flex;
   flex-direction: column;
-  gap: 14px;
+  gap: 16px;
 }
 
 .contact-btn {
@@ -439,7 +555,6 @@ nav {
   text-decoration: none;
   transition: all 0.2s;
 }
-.contact-btn .btn-arrow { font-size: 16px; }
 .contact-btn.primary {
   background: var(--ink);
   color: var(--white);
@@ -473,11 +588,11 @@ footer {
   display: flex;
   align-items: baseline;
 }
-.footer-brand .wordmark .fp { font-weight: 300; letter-spacing: 0.18em; color: rgba(250,250,250,0.55); margin-left: 7px; }
+.footer-brand .wordmark .fp { font-weight: 300; letter-spacing: 0.18em; color: rgba(250,250,250,0.6); margin-left: 7px; }
 .footer-brand p {
   font-size: 12px;
   line-height: 1.75;
-  color: rgba(250,250,250,0.5);
+  color: rgba(250,250,250,0.65);
   max-width: 220px;
 }
 .footer-nav-label {
@@ -485,7 +600,7 @@ footer {
   font-size: 10px;
   letter-spacing: 0.18em;
   text-transform: uppercase;
-  color: rgba(250,250,250,0.4);
+  color: rgba(250,250,250,0.55);
   margin-bottom: 16px;
 }
 .footer-nav { list-style: none; display: flex; flex-direction: column; gap: 10px; }
@@ -494,17 +609,17 @@ footer {
   font-size: 13px;
   letter-spacing: 0.08em;
   text-transform: uppercase;
-  color: rgba(250,250,250,0.65);
+  color: rgba(250,250,250,0.7);
   text-decoration: none;
   transition: color 0.2s;
 }
 .footer-nav a:hover { color: var(--white); }
 .footer-copy {
   font-size: 11px;
-  color: rgba(250,250,250,0.38);
+  color: rgba(250,250,250,0.5);
   margin-top: 40px;
   padding-top: 20px;
-  border-top: 1px solid rgba(250,250,250,0.08);
+  border-top: 1px solid rgba(250,250,250,0.12);
   grid-column: 1 / -1;
   display: flex;
   justify-content: space-between;
@@ -536,21 +651,14 @@ footer {
     border: none;
   }
   .hamburger span { display: block; width: 22px; height: 2px; background: var(--ink); }
-  .hero { padding: 0 20px 60px; }
-  .hero-inner { grid-template-columns: 1fr; }
-  .hero-meta { display: none; }
-  .model { padding: 60px 20px; }
-  .model-grid { grid-template-columns: 1fr; }
-  .model-col,
-  .model-col:first-child,
-  .model-col:last-child,
-  .model-col:nth-child(2) {
-    padding: 36px 0;
-    border-right: none;
-    border-bottom: 1px solid var(--rule);
-  }
-  .model-col:last-child { border-bottom: none; }
-  .forthcoming { grid-template-columns: 1fr; padding: 60px 20px; gap: 40px; }
+  .hero-content { padding: 0 20px 48px; grid-template-columns: 1fr; }
+  .hero-right { display: none; }
+  .exh-feature { grid-template-columns: 1fr; }
+  .exh-images { min-height: 60vw; }
+  .exh-info { padding: 40px 20px; border-left: none; border-top: 1px solid var(--rule-heavy); }
+  .about { grid-template-columns: 1fr; }
+  .about-left { padding: 60px 20px; }
+  .about-right { padding: 60px 20px; }
   .contact { grid-template-columns: 1fr; gap: 40px; padding: 60px 20px; }
   footer { grid-template-columns: 1fr; padding: 48px 20px; }
 }
@@ -566,97 +674,76 @@ footer {
     <span class="dot"></span>
   </a>
   <ul class="nav-links" id="navLinks">
+    <li><a href="/exhibitions/adaptation/">Exhibitions</a></li>
     <li><a href="/about/">About</a></li>
     <li><a href="mailto:hello@victoryprojects.org" class="nav-cta">Contact</a></li>
   </ul>
-  <button class="hamburger" id="hamburger"
-    onclick="document.getElementById('navLinks').classList.toggle('open')"
-    aria-label="Menu">
+  <button class="hamburger" id="hamburger" onclick="document.getElementById('navLinks').classList.toggle('open')" aria-label="Menu">
     <span></span><span></span><span></span>
   </button>
 </nav>
 
 <!-- HERO -->
 <section class="hero">
-  <div class="hero-watermark">VP</div>
-  <div class="hero-inner">
-    <div>
-      <div class="hero-eyebrow">International Exhibition Development</div>
+  <div class="hero-bg"></div>
+  <div class="hero-vignette"></div>
+  <div class="hero-content">
+    <div class="hero-left">
+      <div class="hero-eyebrow">Current Exhibition</div>
+      <div class="hero-artist">Anastasia Samoylova</div>
       <h1 class="hero-title">
-        <span class="line">EXHIBITION</span>
-        <span class="line">DEVELOPMENT</span>
-        <span class="line hollow">& CIRCULATION</span>
+        ADAP<span class="hollow">TATION</span>
       </h1>
-      <p class="hero-sub">Victory Projects produces and circulates significant lens-based art exhibitions to leading institutions internationally.</p>
-      <a href="mailto:hello@victoryprojects.org" class="hero-cta">Get in touch</a>
+      <a href="/exhibitions/adaptation/" class="hero-cta">View exhibition</a>
     </div>
-    <div class="hero-meta">
-      <div class="hero-meta-item">
-        <div class="hero-meta-label">Based in</div>
-        <div class="hero-meta-value">Lisbon, Portugal</div>
-      </div>
-      <div class="hero-meta-item">
-        <div class="hero-meta-label">Operating</div>
-        <div class="hero-meta-value">Internationally</div>
+    <div class="hero-right">
+      <div class="hero-provenance">
+        <div class="hero-provenance-label">Previously shown at</div>
+        <div class="hero-provenance-venue">Saatchi Gallery<br>London</div>
+        <div class="hero-provenance-date">November 2024 – January 2025</div>
       </div>
     </div>
   </div>
 </section>
 
-<!-- THE MODEL -->
-<section class="model">
-  <div class="section-label teal-rule">The Model</div>
-  <div class="model-grid">
-    <div class="model-col">
-      <div class="model-number">01</div>
-      <div class="model-heading">Originate</div>
-      <p class="model-text">We develop original exhibitions in close creative collaboration with artists — from initial concept through final curatorial realisation.</p>
+<!-- EXHIBITION FEATURE -->
+<section class="exh-feature">
+  <div class="exh-images">
+    <div class="exh-img tall">
+      <img class="img-fill" src="images/Flamingo-Reflection-2018.jpg" alt="Flamingo Reflection, 2018">
     </div>
-    <div class="model-col">
-      <div class="model-number">02</div>
-      <div class="model-heading">Produce</div>
-      <p class="model-text">We manage all aspects of exhibition production: framing, materials, logistics, installation documentation, and venue coordination.</p>
+    <div class="exh-img">
+      <img class="img-fill" src="images/Beached-Boat-2019.jpg" alt="Beached Boat, 2019">
     </div>
-    <div class="model-col">
-      <div class="model-number">03</div>
-      <div class="model-heading">Circulate</div>
-      <p class="model-text">We place and circulate exhibitions internationally, building multi-venue touring schedules across Europe and beyond.</p>
+    <div class="exh-img">
+      <img class="img-fill" src="images/Beauty-Salon-Milan-2022.jpg" alt="Beauty Salon Milan, 2022">
     </div>
   </div>
-</section>
-
-
-<!-- FORTHCOMING PROGRAMME -->
-<section class="forthcoming">
-  <div>
-    <div class="section-label pink-rule">Programme</div>
-    <h2 class="forthcoming-title">
-      <span>FORTHCOMING</span>
-      <span class="hollow">SEASON</span>
-    </h2>
-  </div>
-  <div class="forthcoming-right">
-    <p class="forthcoming-text">New exhibitions are currently in development. Institutions interested in hosting Victory Projects programming are invited to enquire.</p>
-    <a href="mailto:hello@victoryprojects.org" class="forthcoming-cta">Venue enquiries</a>
-  </div>
-</section>
-
-<!-- CONTACT -->
-<section class="contact">
-  <div>
-    <div class="section-label pink-rule">Contact</div>
-    <h2 class="contact-heading">WORK<br>WITH US</h2>
-    <p class="contact-sub">We work with artists and institutions internationally. All enquiries are welcome.</p>
-  </div>
-  <div class="contact-right">
-    <a href="mailto:hello@victoryprojects.org" class="contact-btn primary">
-      <span>Exhibition Enquiries</span>
-      <span class="btn-arrow">→</span>
-    </a>
-    <a href="/about/" class="contact-btn secondary">
-      <span>About Victory Projects</span>
-      <span class="btn-arrow">→</span>
-    </a>
+  <div class="exh-info">
+    <div class="exh-info-top">
+      <div class="exh-label">Exhibition</div>
+      <div class="exh-artist-name">Anastasia Samoylova</div>
+      <h2 class="exh-title">Adaptation</h2>
+      <p class="exh-statement">
+        The first major survey of Samoylova's work — five bodies of photography that map capitalism, climate, and the gendered occupation of public space.
+      </p>
+      <div class="exh-series">
+        <span class="series-tag">Survey Exhibition</span>
+        
+        <span class="series-tag">Climate & Environment</span>
+        <span class="series-tag">Capitalism & Urban Space</span>
+        <span class="series-tag">Collage</span>
+      </div>
+    </div>
+    <div class="exh-info-bottom">
+      <div class="exh-provenance">
+        <div class="provenance-label">Venue history</div>
+        <p class="provenance-text">
+          <em>Adaptation</em> was first shown at <strong>Saatchi Gallery, London</strong>, from November 2024 to January 2025.
+        </p>
+      </div>
+      <a href="/exhibitions/adaptation/" class="exh-link">Full exhibition details</a>
+    </div>
   </div>
 </section>
 
@@ -669,6 +756,7 @@ footer {
   <div>
     <div class="footer-nav-label">Site</div>
     <ul class="footer-nav">
+      <li><a href="/exhibitions/adaptation/">Exhibitions</a></li>
       <li><a href="/about/">About</a></li>
     </ul>
   </div>
@@ -680,7 +768,6 @@ footer {
   </div>
   <div class="footer-copy">
     <span>© 2026 Victory Projects.</span>
-    <span>Lisbon, Portugal</span>
   </div>
 </footer>
 
